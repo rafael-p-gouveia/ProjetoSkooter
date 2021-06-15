@@ -23,7 +23,7 @@ public class ControleDeJogo {
             eTemp = e.get(i); /*Pega o i-esimo elemento do jogo*/
             /*Verifica se o heroi se sobrepoe ao i-ésimo elemento*/
             if(hHero.getPosicao().estaNaMesmaPosicao(eTemp.getPosicao()))
-                /*Nem todos os elementos podem ser transpostos pelo heroi*/
+                /*Nem todos os elementos podem ser transpostos pelo heroi*/ 
                 if(eTemp.isbTransponivel()) {
                     e.remove(eTemp);
                 }
@@ -39,6 +39,19 @@ public class ControleDeJogo {
                     return false; /*A posicao p é invalida, pois ha um elemento (i-esimo eTemp) intransponivel lá*/
         }
         return true;
+    }
+    
+    public Elemento getElementoColidindo(ArrayList<Elemento> e, Elemento p){
+        Elemento eStep;
+        for(int i = 0; i < e.size(); i++){
+            eStep = e.get(i);
+            if(eStep.getPosicao().estaNaMesmaPosicao(p.getPosicao())){
+                if(eStep != p){
+                    return eStep;
+                }
+            }
+        }
+        return p;
     }
     
     public boolean ehPosicaoValidaRelativaAUmPersonagem(ArrayList<Elemento> e, Elemento umElemento) {

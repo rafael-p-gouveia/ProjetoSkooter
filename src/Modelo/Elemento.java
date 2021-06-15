@@ -24,7 +24,14 @@ public abstract class Elemento implements Serializable {
     protected boolean bTransponivel; /*Pode passar por cima?*/
     protected boolean bMortal;       /*Se encostar, morre?*/
        
-    protected Elemento(String[] sNomeImagePNG) {
+    protected Elemento(String caminho1, String caminho2, String caminho3, String caminho4) {
+        
+        String[] sNomeImagePNG = new String[4];
+        sNomeImagePNG[0] = caminho1;
+        sNomeImagePNG[1] = caminho2;
+        sNomeImagePNG[2] = caminho3;
+        sNomeImagePNG[3] = caminho4;
+        
         iIndexOfImage = 0;
         iImage = new ImageIcon[5];
         this.pPosicao = new Posicao(1, 1);
@@ -115,5 +122,9 @@ public abstract class Elemento implements Serializable {
     
    public void autoDesenho(){
         Desenhador.desenhar(this.iImage[iIndexOfImage], pPosicao.getColuna(), pPosicao.getLinha());        
-    }    
+    }
+   
+   public void interage(Hero hHero){
+       //hHero.voltaAUltimaPosicao();
+   }
 }

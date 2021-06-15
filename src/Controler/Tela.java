@@ -39,7 +39,7 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
     
         /*Cria eElementos adiciona elementos*/
         /*O protagonista (heroi) necessariamente precisa estar na posicao 0 do array*/
-        hHero = new Hero("skooter_hero.png"); /* https://www.online-image-editor.com/ */
+        hHero = new Hero(); /* https://www.online-image-editor.com/ */
         hHero.setPosicao(0, 7);
         minhaFase = new Fase(100);
         minhaFase.setFase1(hHero);
@@ -136,7 +136,7 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
             hHero.moveRight();
         } else if (e.getKeyCode() == KeyEvent.VK_R) {
             this.eElementos.clear();
-            hHero = new Hero("vacina.png");
+            hHero = new Hero();
             hHero.setPosicao(0, 7);
             this.addElemento(hHero);
 
@@ -147,6 +147,7 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
         
         /*Se o heroi for para uma posicao invalida, sobre um elemento intransponivel, volta para onde estava*/
         if (!cControle.ehPosicaoValida(this.eElementos,hHero.getPosicao())) {
+            cControle.getElementoColidindo(this.eElementos, hHero).interage(hHero);
             hHero.voltaAUltimaPosicao();
         }
 
