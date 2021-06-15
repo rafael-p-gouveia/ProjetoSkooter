@@ -18,6 +18,7 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
     private ArrayList<Elemento> eElementos;
     private ControleDeJogo cControle = new ControleDeJogo();
     private Graphics g2;
+    Fase minhaFase;
     /**
      * Creates new form
      */
@@ -40,8 +41,10 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
         /*O protagonista (heroi) necessariamente precisa estar na posicao 0 do array*/
         hHero = new Hero("skooter_hero.png"); /* https://www.online-image-editor.com/ */
         hHero.setPosicao(0, 7);
-        this.addElemento(hHero);
-        
+        minhaFase = new Fase(100);
+        minhaFase.setFase1(hHero);
+        eElementos = minhaFase;
+        /*
         CoronaVirus cTeste = new CoronaVirus("robo_azul.png");
         cTeste.setPosicao(5, 5);
         this.addElemento(cTeste);     
@@ -56,7 +59,8 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
         
         Caveira cCaveira = new Caveira("caveira.png");
         cCaveira.setPosicao(10, 9);
-        this.addElemento(cCaveira);        
+        this.addElemento(cCaveira);  
+        */
     }
 
 /*--------------------------------------------------*/
@@ -83,7 +87,7 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
             for (int j = 0; j < Consts.RES; j++) {
                 try {
                     /*Linha para alterar o background*/
-                    Image newImage = Toolkit.getDefaultToolkit().getImage(new java.io.File(".").getCanonicalPath() + Consts.PATH + "background.png");
+                    Image newImage = Toolkit.getDefaultToolkit().getImage(new java.io.File(".").getCanonicalPath() + Consts.PATH + "background_fase_1.jpg");
                     g2.drawImage(newImage,j*Consts.CELL_SIDE, i*Consts.CELL_SIDE, Consts.CELL_SIDE, Consts.CELL_SIDE, null);
 
                 } catch (IOException ex) {
@@ -96,6 +100,9 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
         if (!this.eElementos.isEmpty()) {
             this.cControle.desenhaTudo(eElementos);
             this.cControle.processaTudo(eElementos);
+            if(!this.cControle.haColecionaveisAinda(eElementos)) {
+                this.minhaFase.setFase2(hHero);
+            }
         }
 
         g.dispose();
@@ -162,6 +169,18 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
         }         
          
         repaint();
+    }
+    
+    public boolean ehPosicaoValida(Posicao umaPosicao) {
+        return cControle.ehPosicaoValida(this.eElementos, umaPosicao);
+    }
+    
+    public boolean ehPosicaoValidaRelativaAUmPersonagem(Elemento umPersonagem) {
+        return cControle.ehPosicaoValidaRelativaAUmPersonagem(this.eElementos, umPersonagem);
+    }
+    
+    public ControleDeJogo getControle() {
+        return this.cControle;
     }
 
     /**

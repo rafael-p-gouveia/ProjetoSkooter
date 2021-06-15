@@ -24,8 +24,9 @@ public class ControleDeJogo {
             /*Verifica se o heroi se sobrepoe ao i-ésimo elemento*/
             if(hHero.getPosicao().estaNaMesmaPosicao(eTemp.getPosicao()))
                 /*Nem todos os elementos podem ser transpostos pelo heroi*/
-                if(eTemp.isbTransponivel())
+                if(eTemp.isbTransponivel()) {
                     e.remove(eTemp);
+                }
         }
     }
     public boolean ehPosicaoValida(ArrayList<Elemento> e, Posicao p){
@@ -38,5 +39,28 @@ public class ControleDeJogo {
                     return false; /*A posicao p é invalida, pois ha um elemento (i-esimo eTemp) intransponivel lá*/
         }
         return true;
+    }
+    
+    public boolean ehPosicaoValidaRelativaAUmPersonagem(ArrayList<Elemento> e, Elemento umElemento) {
+        Elemento eTemp;
+        for(int i = 1; i < e.size(); i++) {
+            eTemp = e.get(i);
+            if(eTemp == umElemento)
+                continue;
+            if(!eTemp.isbTransponivel())
+                if(eTemp.getPosicao().estaNaMesmaPosicao(umElemento.getPosicao()))
+                    return false;
+        }
+        return true;
+    }
+    
+    public boolean haColecionaveisAinda(ArrayList<Elemento> e) {
+        Elemento eTemp;
+        for(int i = 1; i < e.size(); i++) {
+            if(e.get(i).isColecionavel()) {
+                return true;
+            }
+        }
+        return false;
     }
 }

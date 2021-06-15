@@ -17,6 +17,7 @@ import javax.swing.JPanel;
 public class Hero extends Elemento implements Serializable{
     public Hero(String sNomeImagePNG) {
         super(sNomeImagePNG);
+        this.bTransponivel = false;
     }
 
     public void voltaAUltimaPosicao(){

@@ -21,7 +21,11 @@ public class CoronaVirus extends Elemento implements Serializable{
     public CoronaVirus(String sNomeImagePNG) {
         super(sNomeImagePNG);
         bRight = true;
-        this.bTransponivel = false;
+        this.bTransponivel = true;
+    }
+    
+    public void voltaAUltimaPosicao(){
+        this.pPosicao.volta();
     }
     
     public void autoDesenho(){
