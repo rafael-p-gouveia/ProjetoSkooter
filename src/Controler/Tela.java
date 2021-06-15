@@ -40,7 +40,7 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
         /*Cria eElementos adiciona elementos*/
         /*O protagonista (heroi) necessariamente precisa estar na posicao 0 do array*/
         hHero = new Hero("skooter_hero.png"); /* https://www.online-image-editor.com/ */
-        hHero.setPosicao(0, 7);
+        hHero.setPosicao(4, 4);
         minhaFase = new Fase(100);
         minhaFase.setFase1(hHero);
         eElementos = minhaFase;
