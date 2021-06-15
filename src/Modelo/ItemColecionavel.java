@@ -12,8 +12,8 @@ import Auxiliar.Posicao;
  * @author guigu
  */
 public class ItemColecionavel extends Elemento {
-    public ItemColecionavel(Posicao umaPosicao) {
-        super("uva.jpg");
+    public ItemColecionavel(Posicao umaPosicao, String nomeImagem) {
+        super(nomeImagem);
         this.setPosicao(umaPosicao);
         this.setbColecionavel(true);
         bTransponivel = true;

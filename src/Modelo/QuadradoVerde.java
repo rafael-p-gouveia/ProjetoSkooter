@@ -14,7 +14,7 @@ import Auxiliar.Posicao;
 public class QuadradoVerde extends Elemento {
     
     public QuadradoVerde(Posicao umaPosicao) {
-        super("bloco_losango_verde.jpg");
+        super("bloco_losango_verde.png");
         this.setPosicao(umaPosicao);
         bTransponivel = false;
     }
