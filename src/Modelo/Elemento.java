@@ -22,7 +22,7 @@ public abstract class Elemento implements Serializable {
     protected Posicao pPosicao;
     protected boolean bColecionavel;
     protected boolean bTransponivel; /*Pode passar por cima?*/
-    protected boolean bMortal;       /*Se encostar, morre?*/
+    protected boolean bInterativo; //interage com blocos do mapa
        
     protected Elemento(String caminho1, String caminho2, String caminho3, String caminho4) {
         
@@ -32,12 +32,14 @@ public abstract class Elemento implements Serializable {
         sNomeImagePNG[2] = caminho3;
         sNomeImagePNG[3] = caminho4;
         
+        bColecionavel = false;
+        bInterativo = false;
+        bTransponivel = false;
         iIndexOfImage = 0;
         iImage = new ImageIcon[5];
         this.pPosicao = new Posicao(1, 1);
         this.bColecionavel = false;
         this.bTransponivel = true;
-        this.bMortal = false;
         try {
             for(int i = 0; i < sNomeImagePNG.length; i++) {
                 iImage[i] = new ImageIcon(new java.io.File(".").getCanonicalPath() + Consts.PATH + sNomeImagePNG[i]);
@@ -58,7 +60,6 @@ public abstract class Elemento implements Serializable {
         sNomeImagePNG[0] = sUmaImagem;
         this.pPosicao = new Posicao(1, 1);
         this.bTransponivel = true;
-        this.bMortal = false;
         iImage = new ImageIcon[5];
         try {
             iImage[0] = new ImageIcon(new java.io.File(".").getCanonicalPath() + Consts.PATH + sNomeImagePNG[0]);
@@ -76,10 +77,13 @@ public abstract class Elemento implements Serializable {
         return pPosicao;
     }
 
+    public boolean isbInterativo(){
+        return bInterativo;
+    }
+    
     public boolean isbTransponivel() {
         return bTransponivel;
     }
-
     public void setbTransponivel(boolean bTransponivel) {
         this.bTransponivel = bTransponivel;
     }

@@ -32,11 +32,29 @@ public class ControleDeJogo {
     public boolean ehPosicaoValida(ArrayList<Elemento> e, Posicao p){
         Elemento eTemp;
         /*Validacao da posicao de todos os elementos com relacao a Posicao p*/
+       if(p.getLinha() == -1 || p.getLinha() == 11 || p.getColuna() == -1 || p.getColuna() == 11){
+            return false;
+        }
         for(int i = 1; i < e.size(); i++){ /*Olha todos os elementos*/
             eTemp = e.get(i); /*Pega o i-esimo elemento do jogo*/
-            if(!eTemp.isbTransponivel())
-                if(eTemp.getPosicao().estaNaMesmaPosicao(p))
+            if(eTemp.getPosicao().estaNaMesmaPosicao(p)){
+                if(!eTemp.isbTransponivel()){
                     return false; /*A posicao p é invalida, pois ha um elemento (i-esimo eTemp) intransponivel lá*/
+                }
+            }
+        }
+        return true;
+    }
+    public boolean ehPosicaoValidaParaItens(ArrayList<Elemento> e, Posicao p){
+        Elemento eTemp;
+        /*Validacao da posicao de todos os elementos com relacao a Posicao p*/
+       if(p.getLinha() == -1 || p.getLinha() == 11 || p.getColuna() == -1 || p.getColuna() == 11){
+            return false;
+        }
+        for(int i = 1; i < e.size(); i++){ /*Olha todos os elementos*/
+            eTemp = e.get(i); /*Pega o i-esimo elemento do jogo*/
+            if(eTemp.getPosicao().estaNaMesmaPosicao(p))
+                return false; /*A posicao p é invalida, pois ha um elemento (i-esimo eTemp) intransponivel lá*/
         }
         return true;
     }
@@ -60,9 +78,11 @@ public class ControleDeJogo {
             eTemp = e.get(i);
             if(eTemp == umElemento)
                 continue;
-            if(!eTemp.isbTransponivel())
-                if(eTemp.getPosicao().estaNaMesmaPosicao(umElemento.getPosicao()))
+            if(eTemp.getPosicao().estaNaMesmaPosicao(umElemento.getPosicao())){
+                if(!eTemp.isbTransponivel() || !umElemento.isbInterativo()){
                     return false;
+                }
+            }
         }
         return true;
     }

@@ -17,6 +17,7 @@ public class QuadradoVerde extends Elemento {
         super("bloco_losango_verde.png");
         this.setPosicao(umaPosicao);
         bTransponivel = false;
+        
     }
     
     @Override
@@ -24,27 +25,29 @@ public class QuadradoVerde extends Elemento {
         
         switch(h.iIndexOfImage){
             case 0:
-                if(Desenhador.getTelaDoJogo().ehPosicaoValida(new Posicao(getPosicao().getLinha() + 1, getPosicao().getColuna()))){
+                if(Desenhador.getTelaDoJogo().ehPosicaoValidaParaItens(new Posicao(getPosicao().getLinha() + 1, getPosicao().getColuna()))){
+                    //h.setPosicao(pPosicao);
                     this.moveDown();
-                    h.setPosicao(pPosicao);
                 }
                 break;
             case 1:
-                if(Desenhador.getTelaDoJogo().ehPosicaoValida(new Posicao(getPosicao().getLinha(), getPosicao().getColuna() - 1))){
+                if(Desenhador.getTelaDoJogo().ehPosicaoValidaParaItens(new Posicao(getPosicao().getLinha(), getPosicao().getColuna() - 1))){
+                    //h.setPosicao(pPosicao);
                     this.moveLeft();
-                    h.setPosicao(pPosicao);
                 }
                 break;
             case 2:
-                if(Desenhador.getTelaDoJogo().ehPosicaoValida(new Posicao(getPosicao().getLinha() - 1, getPosicao().getColuna()))){
+                if(Desenhador.getTelaDoJogo().ehPosicaoValidaParaItens(new Posicao(getPosicao().getLinha() - 1, getPosicao().getColuna()))){
+                    //h.setPosicao(pPosicao);
                     this.moveUp();
-                    h.setPosicao(pPosicao);
+                    
                 }
                 break;
             case 3:
-                if(Desenhador.getTelaDoJogo().ehPosicaoValida(new Posicao(getPosicao().getLinha(), getPosicao().getColuna() + 1))){
+                if(Desenhador.getTelaDoJogo().ehPosicaoValidaParaItens(new Posicao(getPosicao().getLinha(), getPosicao().getColuna() + 1))){
+                    //h.setPosicao(pPosicao);
                     this.moveRight();
-                    h.setPosicao(pPosicao);
+                   
                 }
                 break;
         }

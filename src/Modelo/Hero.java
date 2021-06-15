@@ -19,6 +19,7 @@ public class Hero extends ElementoDinamico implements Serializable{
     public Hero() {
         super("protag_baixo.png","protag_esquerda.png","protag_cima.png","protag_direita.png");
         this.bTransponivel = false;
+        bInterativo = true;
     }
 
     public void voltaAUltimaPosicao(){

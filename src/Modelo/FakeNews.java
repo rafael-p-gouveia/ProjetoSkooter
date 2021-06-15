@@ -13,7 +13,7 @@ public class FakeNews extends Elemento implements Serializable{
             
     public FakeNews(String sNomeImagePNG) {
         super(sNomeImagePNG);
-        this.bMortal = true;
+        //this.bMortal = true;
     }
 
     public void autoDesenho() {

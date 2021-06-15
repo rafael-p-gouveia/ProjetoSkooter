@@ -143,6 +143,8 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
             CoronaVirus cTeste = new CoronaVirus("carro_azul.png");
             cTeste.setPosicao(5, 5);
             this.addElemento(cTeste);
+        } else if (e.getKeyCode() == KeyEvent.VK_X){
+            
         }
         
         /*Se o heroi for para uma posicao invalida, sobre um elemento intransponivel, volta para onde estava*/
@@ -174,6 +176,10 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
     
     public boolean ehPosicaoValida(Posicao umaPosicao) {
         return cControle.ehPosicaoValida(this.eElementos, umaPosicao);
+    }
+    
+    public boolean ehPosicaoValidaParaItens(Posicao umaPosicao) {
+        return cControle.ehPosicaoValidaParaItens(this.eElementos, umaPosicao);
     }
     
     public boolean ehPosicaoValidaRelativaAUmPersonagem(Elemento umPersonagem) {
