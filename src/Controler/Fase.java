@@ -5,6 +5,7 @@
  */
 package Controler;
 
+import Auxiliar.Consts;
 import Modelo.*;
 import Auxiliar.Posicao;
 import java.util.ArrayList;
@@ -86,20 +87,69 @@ public class Fase extends ArrayList<Elemento>{
     
     public void setFase2(Hero umHero) {
         this.clear();
+        
+        umHero.setPosicao(5, 5);
         this.add(umHero);
 
-        this.add(new QuadradoVermelho(new Posicao(10,7)));
+        this.add(new QuadradoVermelho(new Posicao(1,3)));
+        this.add(new QuadradoVermelho(new Posicao(1,7)));
+        this.add(new QuadradoVermelho(new Posicao(3,1)));
+        this.add(new QuadradoVermelho(new Posicao(3,3)));
+        this.add(new QuadradoVermelho(new Posicao(3,5)));
+        this.add(new QuadradoVermelho(new Posicao(3,7)));
+        this.add(new QuadradoVermelho(new Posicao(3,9)));
+        this.add(new QuadradoVermelho(new Posicao(5,3)));
+        this.add(new QuadradoVermelho(new Posicao(5,7)));
+        this.add(new QuadradoVermelho(new Posicao(7,1)));
+        this.add(new QuadradoVermelho(new Posicao(7,3)));
+        this.add(new QuadradoVermelho(new Posicao(7,5)));
         this.add(new QuadradoVermelho(new Posicao(7,7)));
-        
+        this.add(new QuadradoVermelho(new Posicao(7,9)));
+        this.add(new QuadradoVermelho(new Posicao(9,3)));
         this.add(new QuadradoVermelho(new Posicao(9,7)));
         
-        this.add(new RoboVermelho(new Posicao(0,8)));
+        this.add(new BlocoSeta(new Posicao(0,3),Consts.RIGHT));
+        this.add(new BlocoSeta(new Posicao(0,7),Consts.RIGHT));
+        this.add(new BlocoSeta(new Posicao(2,3),Consts.RIGHT));
+        this.add(new BlocoSeta(new Posicao(2,4),Consts.DOWN));
+        this.add(new BlocoSeta(new Posicao(2,5),Consts.LEFT));
+        this.add(new BlocoSeta(new Posicao(2,6),Consts.LEFT));
+        this.add(new BlocoSeta(new Posicao(2,7),Consts.LEFT));
+        this.add(new BlocoSeta(new Posicao(3,0),Consts.UP));
+        this.add(new BlocoSeta(new Posicao(3,2),Consts.DOWN));
+        this.add(new BlocoSeta(new Posicao(3,4),Consts.DOWN));
+        this.add(new BlocoSeta(new Posicao(3,6),Consts.UP));
+        this.add(new BlocoSeta(new Posicao(3,8),Consts.UP));
+        this.add(new BlocoSeta(new Posicao(3,10),Consts.DOWN));
+        this.add(new BlocoSeta(new Posicao(4,0),Consts.UP));
+        this.add(new BlocoSeta(new Posicao(4,3),Consts.RIGHT));
+        this.add(new BlocoSeta(new Posicao(4,7),Consts.RIGHT));
+        this.add(new BlocoSeta(new Posicao(4,8),Consts.UP));
+        this.add(new BlocoSeta(new Posicao(4,9),Consts.LEFT));
+        this.add(new BlocoSeta(new Posicao(4,10),Consts.LEFT));
+        this.add(new BlocoSeta(new Posicao(5,0),Consts.UP));
+        this.add(new BlocoSeta(new Posicao(6,0),Consts.UP));
+        this.add(new BlocoSeta(new Posicao(6,3),Consts.RIGHT));
+        this.add(new BlocoSeta(new Posicao(6,7),Consts.LEFT));
+        this.add(new BlocoSeta(new Posicao(7,0),Consts.UP));
+        this.add(new BlocoSeta(new Posicao(7,2),Consts.DOWN));
+        this.add(new BlocoSeta(new Posicao(7,4),Consts.DOWN));
+        this.add(new BlocoSeta(new Posicao(7,6),Consts.UP));
+        this.add(new BlocoSeta(new Posicao(7,8),Consts.UP));
+        this.add(new BlocoSeta(new Posicao(7,10),Consts.UP));
+        this.add(new BlocoSeta(new Posicao(8,3),Consts.RIGHT));
+        this.add(new BlocoSeta(new Posicao(8,7),Consts.RIGHT));
+        this.add(new BlocoSeta(new Posicao(10,3),Consts.LEFT));
+        this.add(new BlocoSeta(new Posicao(10,7),Consts.RIGHT));
         
-        this.add(new QuadradoVermelho(new Posicao(1,4)));
-        this.add(new QuadradoVerde(new Posicao(0,1)));
-        this.add(new QuadradoVerde(new Posicao(1,2)));
+        this.add(new RoboVermelho(new Posicao(1,1)));
+        this.add(new RoboVermelho(new Posicao(1,9)));
+        this.add(new RoboVermelho(new Posicao(9,1)));
+        this.add(new RoboVermelho(new Posicao(9,9)));
 
-        this.add(new ItemColecionavel(new Posicao(0,0),"uva.jpg"));
-        this.add(new ItemColecionavel(new Posicao(10,1),"uva.jpg"));
+        this.add(new ItemColecionavel(new Posicao(1,5),"uva.jpg"));
+        this.add(new ItemColecionavel(new Posicao(5,9),"morango.jpg"));
+        this.add(new ItemColecionavel(new Posicao(5,1),"limao.jpg"));
+        this.add(new ItemColecionavel(new Posicao(9,5),"cereja.jpg"));
     }
 }

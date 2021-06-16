@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package Modelo;
+import Auxiliar.Consts;
 import Auxiliar.Desenhador;
 import Auxiliar.Posicao;
 
@@ -17,7 +18,6 @@ public class QuadradoVerde extends Elemento {
         super("bloco_losango_verde.png");
         this.setPosicao(umaPosicao);
         bTransponivel = false;
-        //bMovel = true;
         setbDestrutivel(true);
     }
     
@@ -25,39 +25,30 @@ public class QuadradoVerde extends Elemento {
     public void interage(Hero h){
         
         switch(h.iIndexOfImage){
-            case 0:
+            case Consts.DOWN:
                 if(Desenhador.getTelaDoJogo().ehPosicaoValidaParaItens(new Posicao(getPosicao().getLinha() + 1, getPosicao().getColuna()))){
                     //h.setPosicao(pPosicao);
                     this.moveDown();
-                    
                 }
                 break;
-            case 1:
+            case Consts.LEFT:
                 if(Desenhador.getTelaDoJogo().ehPosicaoValidaParaItens(new Posicao(getPosicao().getLinha(), getPosicao().getColuna() - 1))){
                     //h.setPosicao(pPosicao);
                     this.moveLeft();
-                    
                 }
                 break;
-            case 2:
+            case Consts.UP:
                 if(Desenhador.getTelaDoJogo().ehPosicaoValidaParaItens(new Posicao(getPosicao().getLinha() - 1, getPosicao().getColuna()))){
                     //h.setPosicao(pPosicao);
                     this.moveUp();
-                    
-                    
                 }
                 break;
-            case 3:
+            case Consts.RIGHT:
                 if(Desenhador.getTelaDoJogo().ehPosicaoValidaParaItens(new Posicao(getPosicao().getLinha(), getPosicao().getColuna() + 1))){
                     //h.setPosicao(pPosicao);
                     this.moveRight();
-                    
-                   
                 }
                 break;
         }
-        
-        
     }
-    
 }

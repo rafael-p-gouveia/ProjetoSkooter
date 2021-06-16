@@ -16,24 +16,24 @@ public class RoboVermelho extends ElementoDinamico {
     public RoboVermelho(Posicao umaPosicao) {
         super("r_rosa_baixo.png","r_rosa_esquerda.png","r_rosa_cima.png","r_rosa_direita.png");
         this.setPosicao(umaPosicao);
-        this.bTransponivel = false;
+        this.bTransponivel = true;
     }
     
     public void autoDesenho() {
         Random r = new Random();
         int iDirecao = r.nextInt(4);
         switch(iDirecao) {
-            case 0:
-                this.moveUp();
-                break;
-            case 1:
-                this.moveRight();
-                break;
-            case 2:
+            case Consts.DOWN:
                 this.moveDown();
                 break;
-            case 3:
+            case Consts.LEFT:
                 this.moveLeft();
+                break;
+            case Consts.UP:
+                this.moveUp();
+                break;
+            case Consts.RIGHT:
+                this.moveRight();
                 break;
         }
         if(!Desenhador.getTelaDoJogo().ehPosicaoValidaRelativaAUmPersonagem(this))

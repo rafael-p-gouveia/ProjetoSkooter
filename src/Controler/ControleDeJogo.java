@@ -24,7 +24,7 @@ public class ControleDeJogo {
             /*Verifica se o heroi se sobrepoe ao i-ésimo elemento*/
             if(hHero.getPosicao().estaNaMesmaPosicao(eTemp.getPosicao()))
                 /*Nem todos os elementos podem ser transpostos pelo heroi*/ 
-                if(eTemp.isbTransponivel()) {
+                if(eTemp.isColecionavel()) {
                     e.remove(eTemp);
                 }
         }

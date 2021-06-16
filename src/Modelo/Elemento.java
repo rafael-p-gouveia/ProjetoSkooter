@@ -23,8 +23,8 @@ public abstract class Elemento implements Serializable {
     protected boolean bColecionavel;
     protected boolean bTransponivel; /*Pode passar por cima?*/
     protected boolean bInterativo; //interage com blocos do mapa
-     protected boolean bDestrutivel; //bloco pode ser destruido pelo hero?
-    //protected boolean bMovel; //o elemento pode se mexer
+    protected boolean bDestrutivel; //bloco pode ser destruido pelo hero?
+    protected boolean bBlocoSeta; // o elemento é um bloco seta?
        
     public Elemento(Auxiliar.Posicao p){
         pPosicao = p;
@@ -41,6 +41,8 @@ public abstract class Elemento implements Serializable {
         bColecionavel = false;
         bInterativo = false;
         bTransponivel = false;
+        bDestrutivel = false;
+        bBlocoSeta = false;
         iIndexOfImage = 0;
         iImage = new ImageIcon[5];
         this.pPosicao = new Posicao(1, 1);
@@ -66,6 +68,8 @@ public abstract class Elemento implements Serializable {
         sNomeImagePNG[0] = sUmaImagem;
         this.pPosicao = new Posicao(1, 1);
         this.bTransponivel = true;
+        this.bDestrutivel = false;
+        this.bBlocoSeta = false;
         iImage = new ImageIcon[5];
         try {
             iImage[0] = new ImageIcon(new java.io.File(".").getCanonicalPath() + Consts.PATH + sNomeImagePNG[0]);
@@ -102,9 +106,13 @@ public abstract class Elemento implements Serializable {
         this.bColecionavel = bColecionavel;
     }
     
-    /*public boolean isMovel() {
-        return bMovel;
-    }*/
+    public boolean isbBlocoSeta() {
+        return bBlocoSeta;
+    }
+    
+    public void setbBlocoSeta(boolean bBlocoSeta) {
+        this.bBlocoSeta = bBlocoSeta;
+    }
 
     public boolean setPosicao(int linha, int coluna) {
         return pPosicao.setPosicao(linha, coluna);
@@ -149,6 +157,4 @@ public abstract class Elemento implements Serializable {
     public void setbDestrutivel(boolean bDestrutivel) {
         this.bDestrutivel = bDestrutivel;
     }
-   
-   
 }

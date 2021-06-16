@@ -156,8 +156,12 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
         
         /*Se o heroi for para uma posicao invalida, sobre um elemento intransponivel, volta para onde estava*/
         if (!cControle.ehPosicaoValida(this.eElementos,hHero.getPosicao())) {
-            eElementos.get(cControle.getIndiceElementoColidindo(this.eElementos, hHero)).interage(hHero);
-            hHero.voltaAUltimaPosicao();
+            while(!cControle.ehPosicaoValida(this.eElementos,hHero.getPosicao())) {
+                Elemento eColidido = eElementos.get(cControle.getIndiceElementoColidindo(this.eElementos, hHero));
+                eColidido.interage(hHero);
+                if(!eColidido.isbBlocoSeta())
+                    hHero.voltaAUltimaPosicao();
+            }
         }
 
         this.setTitle("-> Cell: " + (hHero.getPosicao().getColuna()) + ", " + (hHero.getPosicao().getLinha()));

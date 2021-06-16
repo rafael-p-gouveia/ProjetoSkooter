@@ -33,33 +33,33 @@ public class ElementoDinamico extends Elemento implements Serializable {
     }*/
     
     public boolean moveDown() {
-        iIndexOfImage = 0;
+        iIndexOfImage = Consts.DOWN;
         return this.pPosicao.moveDown();
     }
     public boolean moveLeft() {
-        iIndexOfImage = 1;
+        iIndexOfImage = Consts.LEFT;
         return this.pPosicao.moveLeft();
     }
     public boolean moveUp() {
-        iIndexOfImage = 2;
+        iIndexOfImage = Consts.UP;
         return this.pPosicao.moveUp();
     }
     public boolean moveRight() {
-        iIndexOfImage = 3;
+        iIndexOfImage = Consts.RIGHT;
         return this.pPosicao.moveRight();
     }
     public Posicao getPosicaoQueOlha(){
        
-        if(iIndexOfImage == 0){
+        if(iIndexOfImage == Consts.DOWN){
              return new Posicao(getPosicao().getLinha() + 1,getPosicao().getColuna());
          }
-         else if (iIndexOfImage == 1){
+         else if (iIndexOfImage == Consts.LEFT){
             return new Posicao(getPosicao().getLinha(),getPosicao().getColuna() - 1);
          }     
-         else if (iIndexOfImage == 2){
+         else if (iIndexOfImage == Consts.UP){
             return new Posicao(getPosicao().getLinha() - 1,getPosicao().getColuna());
          }       
-         else if (iIndexOfImage == 3){
+         else if (iIndexOfImage == Consts.RIGHT){
            return new Posicao(getPosicao().getLinha(),getPosicao().getColuna() + 1);  
          }
          return new Posicao(0,0); //gambiarra, confesso, mas esse caso nunca vai ocorrer
