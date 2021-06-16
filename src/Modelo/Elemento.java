@@ -23,12 +23,14 @@ public abstract class Elemento implements Serializable {
     protected boolean bColecionavel;
     protected boolean bTransponivel; /*Pode passar por cima?*/
     protected boolean bInterativo; //interage com blocos do mapa
+     protected boolean bDestrutivel; //bloco pode ser destruido pelo hero?
+    //protected boolean bMovel; //o elemento pode se mexer
        
-    Elemento(Posicao p){
+    public Elemento(Auxiliar.Posicao p){
         pPosicao = p;
     }
     
-    protected Elemento(String caminho1, String caminho2, String caminho3, String caminho4) {
+    public Elemento(String caminho1, String caminho2, String caminho3, String caminho4) {
         
         String[] sNomeImagePNG = new String[4];
         sNomeImagePNG[0] = caminho1;
@@ -99,6 +101,10 @@ public abstract class Elemento implements Serializable {
     public void setbColecionavel(boolean bColecionavel) {
         this.bColecionavel = bColecionavel;
     }
+    
+    /*public boolean isMovel() {
+        return bMovel;
+    }*/
 
     public boolean setPosicao(int linha, int coluna) {
         return pPosicao.setPosicao(linha, coluna);
@@ -132,7 +138,18 @@ public abstract class Elemento implements Serializable {
         Desenhador.desenhar(this.iImage[iIndexOfImage], pPosicao.getColuna(), pPosicao.getLinha());        
     }
    
-   public void interage(Hero hHero){
+   public boolean interage(Hero hHero){
        //hHero.voltaAUltimaPosicao();
+       return false;
    }
+
+    public boolean isbDestrutivel() {
+        return bDestrutivel;
+    }
+
+    public void setbDestrutivel(boolean bDestrutivel) {
+        this.bDestrutivel = bDestrutivel;
+    }
+   
+   
 }

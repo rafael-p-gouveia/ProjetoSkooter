@@ -145,8 +145,13 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
             this.addElemento(cTeste);
         } else if (e.getKeyCode() == KeyEvent.VK_X){
             int iStep;
-            //ElementoDinamico eStep = new ElementoDinamico(hHero.getPosicaoQueOlha());
-            
+            ElementoDinamico eStep = new ElementoDinamico(hHero.getPosicaoQueOlha());
+            iStep = cControle.getIndiceElementoColidindo(eElementos, eStep);
+            if(iStep != -1){
+                if(eElementos.get(iStep).isbDestrutivel()){
+                    eElementos.remove(iStep);
+                }
+            }
         }
         
         /*Se o heroi for para uma posicao invalida, sobre um elemento intransponivel, volta para onde estava*/
@@ -169,9 +174,12 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
          this.hHero.getPosicao().setPosicao(y/Consts.CELL_SIDE, x/Consts.CELL_SIDE);
 
         /*Se o heroi for para uma posicao invalida, sobre um elemento intransponivel, volta para onde estava*/
-        if (!cControle.ehPosicaoValida(this.eElementos,hHero.getPosicao())) {
-            hHero.voltaAUltimaPosicao();
-        }         
+        /*if (!cControle.ehPosicaoValida(this.eElementos,hHero.getPosicao())) {
+            Elemento eColidido = cControle.getElementoColidindo(this.eElementos, hHero);
+            boolean checaMovimento = eColidido.interage(hHero);
+            if(!checaMovimento)
+                hHero.voltaAUltimaPosicao();
+        }*/       
          
         repaint();
     }

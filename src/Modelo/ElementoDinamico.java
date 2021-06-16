@@ -24,9 +24,13 @@ public class ElementoDinamico extends Elemento implements Serializable {
         super(caminho1,caminho2,caminho3,caminho4);
     }
     
-    ElementoDinamico(Posicao p){
+    public ElementoDinamico(Posicao p){
         super(p);
     }
+
+    /*public ElementoDinamico(Posicao posicaoQueOlha) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }*/
     
     public boolean moveDown() {
         iIndexOfImage = 0;
