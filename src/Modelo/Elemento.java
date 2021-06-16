@@ -23,6 +23,7 @@ public abstract class Elemento implements Serializable {
     protected boolean bColecionavel;
     protected boolean bTransponivel; /*Pode passar por cima?*/
     protected boolean bInterativo; //interage com blocos do mapa
+    protected boolean bMovel; //o elemento pode se mexer
        
     protected Elemento(String caminho1, String caminho2, String caminho3, String caminho4) {
         
@@ -95,6 +96,10 @@ public abstract class Elemento implements Serializable {
     public void setbColecionavel(boolean bColecionavel) {
         this.bColecionavel = bColecionavel;
     }
+    
+    public boolean isMovel() {
+        return bMovel;
+    }
 
     public boolean setPosicao(int linha, int coluna) {
         return pPosicao.setPosicao(linha, coluna);
@@ -128,7 +133,8 @@ public abstract class Elemento implements Serializable {
         Desenhador.desenhar(this.iImage[iIndexOfImage], pPosicao.getColuna(), pPosicao.getLinha());        
     }
    
-   public void interage(Hero hHero){
+   public boolean interage(Hero hHero){
        //hHero.voltaAUltimaPosicao();
+       return false;
    }
 }
