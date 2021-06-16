@@ -59,17 +59,17 @@ public class ControleDeJogo {
         return true;
     }
     
-    public Elemento getElementoColidindo(ArrayList<Elemento> e, Elemento p){
+    public int getIndiceElementoColidindo(ArrayList<Elemento> e, Elemento p){
         Elemento eStep;
         for(int i = 0; i < e.size(); i++){
             eStep = e.get(i);
             if(eStep.getPosicao().estaNaMesmaPosicao(p.getPosicao())){
                 if(eStep != p){
-                    return eStep;
+                    return i;
                 }
             }
         }
-        return p;
+        return -1;
     }
     
     public boolean ehPosicaoValidaRelativaAUmPersonagem(ArrayList<Elemento> e, Elemento umElemento) {

@@ -24,6 +24,10 @@ public abstract class Elemento implements Serializable {
     protected boolean bTransponivel; /*Pode passar por cima?*/
     protected boolean bInterativo; //interage com blocos do mapa
        
+    Elemento(Posicao p){
+        pPosicao = p;
+    }
+    
     protected Elemento(String caminho1, String caminho2, String caminho3, String caminho4) {
         
         String[] sNomeImagePNG = new String[4];

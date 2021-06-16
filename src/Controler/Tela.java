@@ -144,12 +144,14 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
             cTeste.setPosicao(5, 5);
             this.addElemento(cTeste);
         } else if (e.getKeyCode() == KeyEvent.VK_X){
+            int iStep;
+            //ElementoDinamico eStep = new ElementoDinamico(hHero.getPosicaoQueOlha());
             
         }
         
         /*Se o heroi for para uma posicao invalida, sobre um elemento intransponivel, volta para onde estava*/
         if (!cControle.ehPosicaoValida(this.eElementos,hHero.getPosicao())) {
-            cControle.getElementoColidindo(this.eElementos, hHero).interage(hHero);
+            eElementos.get(cControle.getIndiceElementoColidindo(this.eElementos, hHero)).interage(hHero);
             hHero.voltaAUltimaPosicao();
         }
 

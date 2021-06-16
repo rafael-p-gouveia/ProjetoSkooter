@@ -24,6 +24,10 @@ public class ElementoDinamico extends Elemento implements Serializable {
         super(caminho1,caminho2,caminho3,caminho4);
     }
     
+    ElementoDinamico(Posicao p){
+        super(p);
+    }
+    
     public boolean moveDown() {
         iIndexOfImage = 0;
         return this.pPosicao.moveDown();
@@ -39,5 +43,21 @@ public class ElementoDinamico extends Elemento implements Serializable {
     public boolean moveRight() {
         iIndexOfImage = 3;
         return this.pPosicao.moveRight();
+    }
+    public Posicao getPosicaoQueOlha(){
+       
+        if(iIndexOfImage == 0){
+             return new Posicao(getPosicao().getLinha() + 1,getPosicao().getColuna());
+         }
+         else if (iIndexOfImage == 1){
+            return new Posicao(getPosicao().getLinha(),getPosicao().getColuna() - 1);
+         }     
+         else if (iIndexOfImage == 2){
+            return new Posicao(getPosicao().getLinha() - 1,getPosicao().getColuna());
+         }       
+         else if (iIndexOfImage == 3){
+           return new Posicao(getPosicao().getLinha(),getPosicao().getColuna() + 1);  
+         }
+         return new Posicao(0,0); //gambiarra, confesso, mas esse caso nunca vai ocorrer
     }
 }
