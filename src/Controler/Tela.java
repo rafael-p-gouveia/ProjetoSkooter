@@ -18,6 +18,8 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
     private ArrayList<Elemento> eElementos;
     private ControleDeJogo cControle = new ControleDeJogo();
     private Graphics g2;
+    int faseAtual;
+    String[] backgroundFases;
     Fase minhaFase;
     /**
      * Creates new form
@@ -35,7 +37,14 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
 
         /*Este array vai guardar os elementos graficos*/
         eElementos = new ArrayList<Elemento>(100);
-
+        
+        backgroundFases = new String[4];
+        backgroundFases[0] = "background_fase_1.jpg";
+        backgroundFases[1] = "background_fase_2.png";
+        backgroundFases[2] = "background_fase_3.png";
+        backgroundFases[3] = "background_fase_4.png";
+        
+        faseAtual = 0;
     
         /*Cria eElementos adiciona elementos*/
         /*O protagonista (heroi) necessariamente precisa estar na posicao 0 do array*/
@@ -87,7 +96,7 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
             for (int j = 0; j < Consts.RES; j++) {
                 try {
                     /*Linha para alterar o background*/
-                    Image newImage = Toolkit.getDefaultToolkit().getImage(new java.io.File(".").getCanonicalPath() + Consts.PATH + "background_fase_1.jpg");
+                    Image newImage = Toolkit.getDefaultToolkit().getImage(new java.io.File(".").getCanonicalPath() + Consts.PATH + this.backgroundFases[faseAtual]);
                     g2.drawImage(newImage,j*Consts.CELL_SIDE, i*Consts.CELL_SIDE, Consts.CELL_SIDE, Consts.CELL_SIDE, null);
 
                 } catch (IOException ex) {
@@ -101,6 +110,7 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
             this.cControle.desenhaTudo(eElementos);
             this.cControle.processaTudo(eElementos);
             if(!this.cControle.haColecionaveisAinda(eElementos)) {
+                faseAtual = 1;
                 this.minhaFase.setFase2(hHero);
             }
         }
