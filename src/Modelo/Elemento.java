@@ -133,8 +133,7 @@ public abstract class Elemento implements Serializable {
         Desenhador.desenhar(this.iImage[iIndexOfImage], pPosicao.getColuna(), pPosicao.getLinha());        
     }
    
-   public boolean interage(Hero hHero){
+   public void interage(Hero hHero){
        //hHero.voltaAUltimaPosicao();
-       return false;
    }
 }

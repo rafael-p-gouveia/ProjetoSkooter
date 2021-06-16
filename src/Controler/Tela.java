@@ -150,10 +150,10 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
         /*Se o heroi for para uma posicao invalida, sobre um elemento intransponivel, volta para onde estava*/
         if (!cControle.ehPosicaoValida(this.eElementos,hHero.getPosicao())) {
             Elemento eColidido = cControle.getElementoColidindo(this.eElementos, hHero);
-            boolean checaMovimento = eColidido.interage(hHero);
-            if(!checaMovimento)
+            eColidido.interage(hHero);
+            if(!cControle.ehPosicaoValidaParaItens(eElementos, eColidido.getPosicao()))
                 hHero.voltaAUltimaPosicao();
-        }
+        }     
 
         this.setTitle("-> Cell: " + (hHero.getPosicao().getColuna()) + ", " + (hHero.getPosicao().getLinha()));
     }
@@ -171,8 +171,8 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
         /*Se o heroi for para uma posicao invalida, sobre um elemento intransponivel, volta para onde estava*/
         if (!cControle.ehPosicaoValida(this.eElementos,hHero.getPosicao())) {
             Elemento eColidido = cControle.getElementoColidindo(this.eElementos, hHero);
-            boolean checaMovimento = eColidido.interage(hHero);
-            if(!checaMovimento)
+            eColidido.interage(hHero);
+            if(!cControle.ehPosicaoValidaParaItens(eElementos, eColidido.getPosicao()))
                 hHero.voltaAUltimaPosicao();
         }       
          

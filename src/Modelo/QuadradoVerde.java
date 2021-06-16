@@ -22,28 +22,28 @@ public class QuadradoVerde extends Elemento {
     }
     
     @Override
-    public boolean interage(Hero h){
+    public void interage(Hero h){
         
         switch(h.iIndexOfImage){
             case 0:
                 if(Desenhador.getTelaDoJogo().ehPosicaoValidaParaItens(new Posicao(getPosicao().getLinha() + 1, getPosicao().getColuna()))){
                     //h.setPosicao(pPosicao);
                     this.moveDown();
-                    return true;
+                    
                 }
                 break;
             case 1:
                 if(Desenhador.getTelaDoJogo().ehPosicaoValidaParaItens(new Posicao(getPosicao().getLinha(), getPosicao().getColuna() - 1))){
                     //h.setPosicao(pPosicao);
                     this.moveLeft();
-                    return true;
+                    
                 }
                 break;
             case 2:
                 if(Desenhador.getTelaDoJogo().ehPosicaoValidaParaItens(new Posicao(getPosicao().getLinha() - 1, getPosicao().getColuna()))){
                     //h.setPosicao(pPosicao);
                     this.moveUp();
-                    return true;
+                    
                     
                 }
                 break;
@@ -51,13 +51,13 @@ public class QuadradoVerde extends Elemento {
                 if(Desenhador.getTelaDoJogo().ehPosicaoValidaParaItens(new Posicao(getPosicao().getLinha(), getPosicao().getColuna() + 1))){
                     //h.setPosicao(pPosicao);
                     this.moveRight();
-                    return true;
+                    
                    
                 }
                 break;
         }
         
-        return false;
+        
     }
     
 }
