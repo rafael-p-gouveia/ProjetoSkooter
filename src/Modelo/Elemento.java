@@ -25,6 +25,7 @@ public abstract class Elemento implements Serializable {
     protected boolean bInterativo; //interage com blocos do mapa
     protected boolean bDestrutivel; //bloco pode ser destruido pelo hero?
     protected boolean bBlocoSeta; // o elemento é um bloco seta?
+    protected boolean bHostil; // o elemento causa dano no jogador?
        
     public Elemento(Auxiliar.Posicao p){
         pPosicao = p;
@@ -38,11 +39,10 @@ public abstract class Elemento implements Serializable {
         sNomeImagePNG[2] = caminho3;
         sNomeImagePNG[3] = caminho4;
         
-        bColecionavel = false;
         bInterativo = false;
-        bTransponivel = false;
         bDestrutivel = false;
         bBlocoSeta = false;
+        bHostil = false;
         iIndexOfImage = 0;
         iImage = new ImageIcon[5];
         this.pPosicao = new Posicao(1, 1);
@@ -70,6 +70,7 @@ public abstract class Elemento implements Serializable {
         this.bTransponivel = true;
         this.bDestrutivel = false;
         this.bBlocoSeta = false;
+        this.bHostil = false;
         iImage = new ImageIcon[5];
         try {
             iImage[0] = new ImageIcon(new java.io.File(".").getCanonicalPath() + Consts.PATH + sNomeImagePNG[0]);
@@ -112,6 +113,14 @@ public abstract class Elemento implements Serializable {
     
     public void setbBlocoSeta(boolean bBlocoSeta) {
         this.bBlocoSeta = bBlocoSeta;
+    }
+    
+    public boolean isbHostil() {
+        return bHostil;
+    }
+    
+    public void setbHostil(boolean bHostil) {
+        this.bHostil = bHostil;
     }
 
     public boolean setPosicao(int linha, int coluna) {

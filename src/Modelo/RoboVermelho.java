@@ -16,7 +16,8 @@ public class RoboVermelho extends ElementoDinamico {
     public RoboVermelho(Posicao umaPosicao) {
         super("r_rosa_baixo.png","r_rosa_esquerda.png","r_rosa_cima.png","r_rosa_direita.png");
         this.setPosicao(umaPosicao);
-        this.bTransponivel = false;
+        this.bTransponivel = true;
+        this.setbHostil(true);
     }
     
     public void autoDesenho() {

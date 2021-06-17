@@ -49,8 +49,7 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
         hHero = new Hero(); /* https://www.online-image-editor.com/ */
         hHero.setPosicao(0, 7);
         minhaFase = new Fase(100);
-        minhaFase.setFase1(hHero);
-        eElementos = minhaFase;
+        eElementos = minhaFase.setFase1(hHero);
         /*
         CoronaVirus cTeste = new CoronaVirus("robo_azul.png");
         cTeste.setPosicao(5, 5);
@@ -104,6 +103,7 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
         }
         
         /*Aqui podem ser inseridos novos processamentos de controle*/
+        eElementos = minhaFase;
         if (!this.eElementos.isEmpty()) {
             this.cControle.desenhaTudo(eElementos);
             this.cControle.processaTudo(eElementos);

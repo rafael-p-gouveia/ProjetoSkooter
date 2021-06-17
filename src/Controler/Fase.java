@@ -18,19 +18,34 @@ public class Fase extends ArrayList<Elemento>{
     Fase(int iSize) {
         super(iSize);
     }
-    int iNfase = 0;
+    int iNfase;
 
     public int getiNfase() {
         return iNfase;
     }
     
-    
-    public void proximaFase(Hero umHero){
-        iNfase++;
-        resetFase(umHero);
+    public void setiNfase(int iNfase) {
+        this.iNfase = iNfase;
     }
     
-    public void resetFase(Hero umHero){
+    
+    public void proximaFase(Hero umHero){
+        if(iNfase < 3)
+            iNfase++;
+        renderizaFase(umHero);
+    }
+    
+    public void resetFase(Hero umHero) {
+        if(umHero.getiNumeroVidas() >= 0)
+            renderizaFase(umHero);
+        else {
+            umHero.ressucita();
+            iNfase = 0;
+            renderizaFase(umHero);
+        }
+    }
+    
+    public void renderizaFase(Hero umHero){
         switch(iNfase){
             case 0:
                 setFase1(umHero);
@@ -39,14 +54,14 @@ public class Fase extends ArrayList<Elemento>{
                 setFase2(umHero);
                 break;
             case 2:
-                //setFase3(umHero);
+                setFase2(umHero);
                 break;
             case 3:
-                //setFase4(umHero);
+                setFase2(umHero);
                 break;
         }
     }
-    public void setFase1(Hero umHero) {
+    public Fase setFase1(Hero umHero) {
         this.clear();
         
         umHero.setPosicao(6, 4);
@@ -105,17 +120,19 @@ public class Fase extends ArrayList<Elemento>{
         
         
         this.add(new RoboVermelho(new Posicao(2,0)));
-        this.add(new RoboVermelho(new Posicao(0,9)));
-        this.add(new RoboVermelho(new Posicao(10,1)));
-        this.add(new RoboVermelho(new Posicao(10,9)));
+        //this.add(new RoboVermelho(new Posicao(0,9)));
+        //this.add(new RoboVermelho(new Posicao(10,1)));
+        //this.add(new RoboVermelho(new Posicao(10,9)));
         
         this.add(new ItemColecionavel(new Posicao(0,0),"uva.jpg"));
         this.add(new ItemColecionavel(new Posicao(10,0),"morango.jpg"));
         this.add(new ItemColecionavel(new Posicao(0,10),"limao.jpg"));
         this.add(new ItemColecionavel(new Posicao(10,10),"cereja.jpg"));
+        
+        return this;
     }
     
-    public void setFase2(Hero umHero) {
+    public Fase setFase2(Hero umHero) {
         this.clear();
         
         umHero.setPosicao(5, 5);
@@ -181,5 +198,7 @@ public class Fase extends ArrayList<Elemento>{
         this.add(new ItemColecionavel(new Posicao(5,9),"morango.jpg"));
         this.add(new ItemColecionavel(new Posicao(5,1),"limao.jpg"));
         this.add(new ItemColecionavel(new Posicao(9,5),"cereja.jpg"));
+        
+        return this;
     }
 }
