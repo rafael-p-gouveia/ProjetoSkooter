@@ -57,7 +57,7 @@ public class Fase extends ArrayList<Elemento>{
                 setFase3(umHero);
                 break;
             case 3:
-                setFase2(umHero);
+                setFase4(umHero);
                 break;
         }
     }
@@ -267,6 +267,84 @@ public class Fase extends ArrayList<Elemento>{
         this.add(new Robo(new Posicao(2,5)));
         this.add(new Robo(new Posicao(8,5)));
         this.add(new Robo(new Posicao(10,5)));
+        
+        return this;
+    }
+    
+    public Fase setFase4(Hero umHero) {
+        this.clear();
+        
+        umHero.setPosicao(4, 5);
+        this.add(umHero);
+        
+        this.add(new QuadradoFixo(new Posicao(1,1), true, "b_verde_liso.png"));
+        this.add(new QuadradoFixo(new Posicao(1,3), true, "b_verde_liso.png"));
+        this.add(new QuadradoFixo(new Posicao(1,5), true, "b_verde_liso.png"));
+        this.add(new QuadradoFixo(new Posicao(1,7), true, "b_verde_liso.png"));
+        this.add(new QuadradoFixo(new Posicao(1,9), true, "b_verde_liso.png"));
+        this.add(new QuadradoFixo(new Posicao(2,2), true, "b_verde_liso.png"));
+        this.add(new QuadradoFixo(new Posicao(2,4), true, "b_verde_liso.png"));
+        this.add(new QuadradoFixo(new Posicao(2,6), true, "b_verde_liso.png"));
+        this.add(new QuadradoFixo(new Posicao(2,8), true, "b_verde_liso.png"));
+        this.add(new QuadradoFixo(new Posicao(3,1), true, "b_verde_liso.png"));
+        this.add(new QuadradoFixo(new Posicao(3,3), true, "b_verde_liso.png"));
+        this.add(new QuadradoFixo(new Posicao(3,5), true, "b_verde_liso.png"));
+        this.add(new QuadradoFixo(new Posicao(3,7), true, "b_verde_liso.png"));
+        this.add(new QuadradoFixo(new Posicao(3,9), true, "b_verde_liso.png"));
+        this.add(new QuadradoFixo(new Posicao(4,2), true, "b_verde_liso.png"));
+        this.add(new QuadradoFixo(new Posicao(4,4), true, "b_verde_liso.png"));
+        this.add(new QuadradoFixo(new Posicao(4,6), true, "b_verde_liso.png"));
+        this.add(new QuadradoFixo(new Posicao(4,8), true, "b_verde_liso.png"));
+        this.add(new QuadradoFixo(new Posicao(5,1), true, "b_verde_liso.png"));
+        this.add(new QuadradoFixo(new Posicao(5,3), true, "b_verde_liso.png"));
+        this.add(new QuadradoFixo(new Posicao(5,5), true, "b_verde_liso.png"));
+        this.add(new QuadradoFixo(new Posicao(5,7), true, "b_verde_liso.png"));
+        this.add(new QuadradoFixo(new Posicao(5,9), true, "b_verde_liso.png"));
+        this.add(new QuadradoFixo(new Posicao(6,2), true, "b_verde_liso.png"));
+        this.add(new QuadradoFixo(new Posicao(6,4), true, "b_verde_liso.png"));
+        this.add(new QuadradoFixo(new Posicao(6,6), true, "b_verde_liso.png"));
+        this.add(new QuadradoFixo(new Posicao(6,8), true, "b_verde_liso.png"));
+        this.add(new QuadradoFixo(new Posicao(7,1), true, "b_verde_liso.png"));
+        this.add(new QuadradoFixo(new Posicao(7,3), true, "b_verde_liso.png"));
+        this.add(new QuadradoFixo(new Posicao(7,5), true, "b_verde_liso.png"));
+        this.add(new QuadradoFixo(new Posicao(7,7), true, "b_verde_liso.png"));
+        this.add(new QuadradoFixo(new Posicao(7,9), true, "b_verde_liso.png"));
+        this.add(new QuadradoFixo(new Posicao(8,2), true, "b_verde_liso.png"));
+        this.add(new QuadradoFixo(new Posicao(8,4), true, "b_verde_liso.png"));
+        this.add(new QuadradoFixo(new Posicao(8,6), true, "b_verde_liso.png"));
+        this.add(new QuadradoFixo(new Posicao(8,8), true, "b_verde_liso.png"));
+        this.add(new QuadradoFixo(new Posicao(9,1), true, "b_verde_liso.png"));
+        this.add(new QuadradoFixo(new Posicao(9,3), true, "b_verde_liso.png"));
+        this.add(new QuadradoFixo(new Posicao(9,5), true, "b_verde_liso.png"));
+        this.add(new QuadradoFixo(new Posicao(9,7), true, "b_verde_liso.png"));
+        this.add(new QuadradoFixo(new Posicao(9,9), true, "b_verde_liso.png"));
+        
+        this.add(new ItemColecionavel(new Posicao(0,0),"sol.jpg"));
+        this.add(new ItemColecionavel(new Posicao(0,10),"lampada.jpg"));
+        this.add(new ItemColecionavel(new Posicao(10,0),"vela.jpg"));
+        this.add(new ItemColecionavel(new Posicao(10,10),"chave_inglesa.jpg"));
+        
+        this.add(new Robo(new Posicao(0,5)));
+        this.add(new Robo(new Posicao(5,0)));
+        this.add(new Robo(new Posicao(5,10)));
+        this.add(new Robo(new Posicao(10,5)));
+        
+        this.add(new QuadradoFixo(new Posicao(0,3), false, "bloco_liso_vermelho.png"));
+        this.add(new QuadradoFixo(new Posicao(0,7), false, "bloco_liso_vermelho.png"));
+        this.add(new QuadradoFixo(new Posicao(1,0), false, "bloco_liso_vermelho.png"));
+        this.add(new QuadradoFixo(new Posicao(1,8), false, "bloco_liso_vermelho.png"));
+        this.add(new QuadradoFixo(new Posicao(2,5), false, "bloco_liso_vermelho.png"));
+        this.add(new QuadradoFixo(new Posicao(3,2), false, "bloco_liso_vermelho.png"));
+        this.add(new QuadradoFixo(new Posicao(3,10), false, "bloco_liso_vermelho.png"));
+        this.add(new QuadradoFixo(new Posicao(5,2), false, "bloco_liso_vermelho.png"));
+        this.add(new QuadradoFixo(new Posicao(5,8), false, "bloco_liso_vermelho.png"));
+        this.add(new QuadradoFixo(new Posicao(6,3), false, "bloco_liso_vermelho.png"));
+        this.add(new QuadradoFixo(new Posicao(7,0), false, "bloco_liso_vermelho.png"));
+        this.add(new QuadradoFixo(new Posicao(8,1), false, "bloco_liso_vermelho.png"));
+        this.add(new QuadradoFixo(new Posicao(8,7), false, "bloco_liso_vermelho.png"));
+        this.add(new QuadradoFixo(new Posicao(8,10), false, "bloco_liso_vermelho.png"));
+        this.add(new QuadradoFixo(new Posicao(10,1), false, "bloco_liso_vermelho.png"));
+        
         
         return this;
     }
