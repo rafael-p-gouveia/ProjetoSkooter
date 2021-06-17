@@ -54,7 +54,7 @@ public class Fase extends ArrayList<Elemento>{
                 setFase2(umHero);
                 break;
             case 2:
-                setFase2(umHero);
+                setFase3(umHero);
                 break;
             case 3:
                 setFase2(umHero);
@@ -67,62 +67,62 @@ public class Fase extends ArrayList<Elemento>{
         umHero.setPosicao(6, 4);
         this.add(umHero);
         
-        this.add(new QuadradoVermelho(new Posicao(1,1)));
-        this.add(new QuadradoVermelho(new Posicao(1,3)));
-        this.add(new QuadradoVermelho(new Posicao(1,5)));
-        this.add(new QuadradoVermelho(new Posicao(1,7)));
-        this.add(new QuadradoVermelho(new Posicao(1,9)));
-        this.add(new QuadradoVermelho(new Posicao(3,1)));
-        this.add(new QuadradoVermelho(new Posicao(3,3)));
-        this.add(new QuadradoVermelho(new Posicao(3,5)));
-        this.add(new QuadradoVermelho(new Posicao(3,7)));
-        this.add(new QuadradoVermelho(new Posicao(3,9)));
-        this.add(new QuadradoVermelho(new Posicao(5,1)));
-        this.add(new QuadradoVermelho(new Posicao(5,3)));
-        this.add(new QuadradoVermelho(new Posicao(5,5)));
-        this.add(new QuadradoVermelho(new Posicao(5,7)));
-        this.add(new QuadradoVermelho(new Posicao(5,9)));
-        this.add(new QuadradoVermelho(new Posicao(7,1)));
-        this.add(new QuadradoVermelho(new Posicao(7,3)));
-        this.add(new QuadradoVermelho(new Posicao(7,5)));
-        this.add(new QuadradoVermelho(new Posicao(7,7)));
-        this.add(new QuadradoVermelho(new Posicao(7,9)));
-        this.add(new QuadradoVermelho(new Posicao(9,1)));
-        this.add(new QuadradoVermelho(new Posicao(9,3)));
-        this.add(new QuadradoVermelho(new Posicao(9,5)));
-        this.add(new QuadradoVermelho(new Posicao(9,7)));
-        this.add(new QuadradoVermelho(new Posicao(9,9)));
+        this.add(new QuadradoFixo(new Posicao(1,1), false, "bloco_liso_vermelho.png"));
+        this.add(new QuadradoFixo(new Posicao(1,3), false, "bloco_liso_vermelho.png"));
+        this.add(new QuadradoFixo(new Posicao(1,5), false, "bloco_liso_vermelho.png"));
+        this.add(new QuadradoFixo(new Posicao(1,7), false, "bloco_liso_vermelho.png"));
+        this.add(new QuadradoFixo(new Posicao(1,9), false, "bloco_liso_vermelho.png"));
+        this.add(new QuadradoFixo(new Posicao(3,1), false, "bloco_liso_vermelho.png"));
+        this.add(new QuadradoFixo(new Posicao(3,3), false, "bloco_liso_vermelho.png"));
+        this.add(new QuadradoFixo(new Posicao(3,5), false, "bloco_liso_vermelho.png"));
+        this.add(new QuadradoFixo(new Posicao(3,7), false, "bloco_liso_vermelho.png"));
+        this.add(new QuadradoFixo(new Posicao(3,9), false, "bloco_liso_vermelho.png"));
+        this.add(new QuadradoFixo(new Posicao(5,1), false, "bloco_liso_vermelho.png"));
+        this.add(new QuadradoFixo(new Posicao(5,3), false, "bloco_liso_vermelho.png"));
+        this.add(new QuadradoFixo(new Posicao(5,5), false, "bloco_liso_vermelho.png"));
+        this.add(new QuadradoFixo(new Posicao(5,7), false, "bloco_liso_vermelho.png"));
+        this.add(new QuadradoFixo(new Posicao(5,9), false, "bloco_liso_vermelho.png"));
+        this.add(new QuadradoFixo(new Posicao(7,1), false, "bloco_liso_vermelho.png"));
+        this.add(new QuadradoFixo(new Posicao(7,3), false, "bloco_liso_vermelho.png"));
+        this.add(new QuadradoFixo(new Posicao(7,5), false, "bloco_liso_vermelho.png"));
+        this.add(new QuadradoFixo(new Posicao(7,7), false, "bloco_liso_vermelho.png"));
+        this.add(new QuadradoFixo(new Posicao(7,9), false, "bloco_liso_vermelho.png"));
+        this.add(new QuadradoFixo(new Posicao(9,1), false, "bloco_liso_vermelho.png"));
+        this.add(new QuadradoFixo(new Posicao(9,3), false, "bloco_liso_vermelho.png"));
+        this.add(new QuadradoFixo(new Posicao(9,5), false, "bloco_liso_vermelho.png"));
+        this.add(new QuadradoFixo(new Posicao(9,7), false, "bloco_liso_vermelho.png"));
+        this.add(new QuadradoFixo(new Posicao(9,9), false, "bloco_liso_vermelho.png"));
         
-        this.add(new QuadradoVerde(new Posicao(0,1)));
-        this.add(new QuadradoVerde(new Posicao(0,5)));
-        this.add(new QuadradoVerde(new Posicao(1,2)));
-        this.add(new QuadradoVerde(new Posicao(1,8)));
-        this.add(new QuadradoVerde(new Posicao(1,10)));
-        this.add(new QuadradoVerde(new Posicao(2,1)));
-        this.add(new QuadradoVerde(new Posicao(2,5)));
-        this.add(new QuadradoVerde(new Posicao(3,0)));
-        this.add(new QuadradoVerde(new Posicao(3,8)));
-        this.add(new QuadradoVerde(new Posicao(4,1)));
-        this.add(new QuadradoVerde(new Posicao(4,9)));
-        this.add(new QuadradoVerde(new Posicao(5,2)));
-        this.add(new QuadradoVerde(new Posicao(5,6)));
-        this.add(new QuadradoVerde(new Posicao(6,5)));
-        this.add(new QuadradoVerde(new Posicao(6,7)));
-        this.add(new QuadradoVerde(new Posicao(7,8)));
-        this.add(new QuadradoVerde(new Posicao(7,10)));
-        this.add(new QuadradoVerde(new Posicao(8,3)));
-        this.add(new QuadradoVerde(new Posicao(8,9)));
-        this.add(new QuadradoVerde(new Posicao(9,0)));
-        this.add(new QuadradoVerde(new Posicao(9,2)));
-        this.add(new QuadradoVerde(new Posicao(9,6)));
-        this.add(new QuadradoVerde(new Posicao(9,8)));
-        this.add(new QuadradoVerde(new Posicao(10,7)));
+        this.add(new QuadradoMovel(new Posicao(0,1), true, "bloco_losango_verde.png"));
+        this.add(new QuadradoMovel(new Posicao(0,5), true, "bloco_losango_verde.png"));
+        this.add(new QuadradoMovel(new Posicao(1,2), true, "bloco_losango_verde.png"));
+        this.add(new QuadradoMovel(new Posicao(1,8), true, "bloco_losango_verde.png"));
+        this.add(new QuadradoMovel(new Posicao(1,10), true, "bloco_losango_verde.png"));
+        this.add(new QuadradoMovel(new Posicao(2,1), true, "bloco_losango_verde.png"));
+        this.add(new QuadradoMovel(new Posicao(2,5), true, "bloco_losango_verde.png"));
+        this.add(new QuadradoMovel(new Posicao(3,0), true, "bloco_losango_verde.png"));
+        this.add(new QuadradoMovel(new Posicao(3,8), true, "bloco_losango_verde.png"));
+        this.add(new QuadradoMovel(new Posicao(4,1), true, "bloco_losango_verde.png"));
+        this.add(new QuadradoMovel(new Posicao(4,9), true, "bloco_losango_verde.png"));
+        this.add(new QuadradoMovel(new Posicao(5,2), true, "bloco_losango_verde.png"));
+        this.add(new QuadradoMovel(new Posicao(5,6), true, "bloco_losango_verde.png"));
+        this.add(new QuadradoMovel(new Posicao(6,5), true, "bloco_losango_verde.png"));
+        this.add(new QuadradoMovel(new Posicao(6,7), true, "bloco_losango_verde.png"));
+        this.add(new QuadradoMovel(new Posicao(7,8), true, "bloco_losango_verde.png"));
+        this.add(new QuadradoMovel(new Posicao(7,10), true, "bloco_losango_verde.png"));
+        this.add(new QuadradoMovel(new Posicao(8,3), true, "bloco_losango_verde.png"));
+        this.add(new QuadradoMovel(new Posicao(8,9), true, "bloco_losango_verde.png"));
+        this.add(new QuadradoMovel(new Posicao(9,0), true, "bloco_losango_verde.png"));
+        this.add(new QuadradoMovel(new Posicao(9,2), true, "bloco_losango_verde.png"));
+        this.add(new QuadradoMovel(new Posicao(9,6), true, "bloco_losango_verde.png"));
+        this.add(new QuadradoMovel(new Posicao(9,8), true, "bloco_losango_verde.png"));
+        this.add(new QuadradoMovel(new Posicao(10,7), true, "bloco_losango_verde.png"));
         
         
-        this.add(new RoboVermelho(new Posicao(2,0)));
-        this.add(new RoboVermelho(new Posicao(0,9)));
-        this.add(new RoboVermelho(new Posicao(10,1)));
-        this.add(new RoboVermelho(new Posicao(10,9)));
+        this.add(new Robo(new Posicao(2,0)));
+        this.add(new Robo(new Posicao(0,9)));
+        this.add(new Robo(new Posicao(10,1)));
+        this.add(new Robo(new Posicao(10,9)));
         
         this.add(new ItemColecionavel(new Posicao(0,0),"uva.jpg"));
         this.add(new ItemColecionavel(new Posicao(10,0),"morango.jpg"));
@@ -138,22 +138,22 @@ public class Fase extends ArrayList<Elemento>{
         umHero.setPosicao(5, 5);
         this.add(umHero);
 
-        this.add(new QuadradoVermelho(new Posicao(1,3)));
-        this.add(new QuadradoVermelho(new Posicao(1,7)));
-        this.add(new QuadradoVermelho(new Posicao(3,1)));
-        this.add(new QuadradoVermelho(new Posicao(3,3)));
-        this.add(new QuadradoVermelho(new Posicao(3,5)));
-        this.add(new QuadradoVermelho(new Posicao(3,7)));
-        this.add(new QuadradoVermelho(new Posicao(3,9)));
-        this.add(new QuadradoVermelho(new Posicao(5,3)));
-        this.add(new QuadradoVermelho(new Posicao(5,7)));
-        this.add(new QuadradoVermelho(new Posicao(7,1)));
-        this.add(new QuadradoVermelho(new Posicao(7,3)));
-        this.add(new QuadradoVermelho(new Posicao(7,5)));
-        this.add(new QuadradoVermelho(new Posicao(7,7)));
-        this.add(new QuadradoVermelho(new Posicao(7,9)));
-        this.add(new QuadradoVermelho(new Posicao(9,3)));
-        this.add(new QuadradoVermelho(new Posicao(9,7)));
+        this.add(new QuadradoFixo(new Posicao(1,3), false, "bloco_liso_vermelho.png"));
+        this.add(new QuadradoFixo(new Posicao(1,7), false, "bloco_liso_vermelho.png"));
+        this.add(new QuadradoFixo(new Posicao(3,1), false, "bloco_liso_vermelho.png"));
+        this.add(new QuadradoFixo(new Posicao(3,3), false, "bloco_liso_vermelho.png"));
+        this.add(new QuadradoFixo(new Posicao(3,5), false, "bloco_liso_vermelho.png"));
+        this.add(new QuadradoFixo(new Posicao(3,7), false, "bloco_liso_vermelho.png"));
+        this.add(new QuadradoFixo(new Posicao(3,9), false, "bloco_liso_vermelho.png"));
+        this.add(new QuadradoFixo(new Posicao(5,3), false, "bloco_liso_vermelho.png"));
+        this.add(new QuadradoFixo(new Posicao(5,7), false, "bloco_liso_vermelho.png"));
+        this.add(new QuadradoFixo(new Posicao(7,1), false, "bloco_liso_vermelho.png"));
+        this.add(new QuadradoFixo(new Posicao(7,3), false, "bloco_liso_vermelho.png"));
+        this.add(new QuadradoFixo(new Posicao(7,5), false, "bloco_liso_vermelho.png"));
+        this.add(new QuadradoFixo(new Posicao(7,7), false, "bloco_liso_vermelho.png"));
+        this.add(new QuadradoFixo(new Posicao(7,9), false, "bloco_liso_vermelho.png"));
+        this.add(new QuadradoFixo(new Posicao(9,3), false, "bloco_liso_vermelho.png"));
+        this.add(new QuadradoFixo(new Posicao(9,7), false, "bloco_liso_vermelho.png"));
         
         this.add(new BlocoSeta(new Posicao(0,3),Consts.RIGHT));
         this.add(new BlocoSeta(new Posicao(0,7),Consts.RIGHT));
@@ -189,15 +189,84 @@ public class Fase extends ArrayList<Elemento>{
         this.add(new BlocoSeta(new Posicao(10,3),Consts.LEFT));
         this.add(new BlocoSeta(new Posicao(10,7),Consts.RIGHT));
         
-        this.add(new RoboVermelho(new Posicao(1,1)));
-        this.add(new RoboVermelho(new Posicao(1,9)));
-        this.add(new RoboVermelho(new Posicao(9,1)));
-        this.add(new RoboVermelho(new Posicao(9,9)));
+        this.add(new Robo(new Posicao(1,1)));
+        this.add(new Robo(new Posicao(1,9)));
+        this.add(new Robo(new Posicao(9,1)));
+        this.add(new Robo(new Posicao(9,9)));
 
         this.add(new ItemColecionavel(new Posicao(1,5),"uva.jpg"));
         this.add(new ItemColecionavel(new Posicao(5,9),"morango.jpg"));
         this.add(new ItemColecionavel(new Posicao(5,1),"limao.jpg"));
         this.add(new ItemColecionavel(new Posicao(9,5),"cereja.jpg"));
+        
+        return this;
+    }
+    
+    public Fase setFase3(Hero umHero) {
+        this.clear();
+        
+        umHero.setPosicao(5, 5);
+        this.add(umHero);
+        
+        this.add(new QuadradoMovel(new Posicao(1,1), false, "b_vermelho_losango.png"));
+        this.add(new QuadradoMovel(new Posicao(1,2), false, "b_vermelho_losango.png"));
+        this.add(new QuadradoMovel(new Posicao(1,3), false, "b_vermelho_losango.png"));
+        this.add(new QuadradoMovel(new Posicao(1,4), false, "b_vermelho_losango.png"));
+        this.add(new QuadradoMovel(new Posicao(1,5), false, "b_vermelho_losango.png"));
+        this.add(new QuadradoMovel(new Posicao(1,6), false, "b_vermelho_losango.png"));
+        this.add(new QuadradoMovel(new Posicao(1,7), false, "b_vermelho_losango.png"));
+        this.add(new QuadradoMovel(new Posicao(1,8), false, "b_vermelho_losango.png"));
+        this.add(new QuadradoMovel(new Posicao(1,9), false, "b_vermelho_losango.png"));
+        this.add(new QuadradoMovel(new Posicao(2,9), false, "b_vermelho_losango.png"));
+        this.add(new QuadradoMovel(new Posicao(3,9), false, "b_vermelho_losango.png"));
+        this.add(new QuadradoMovel(new Posicao(4,9), false, "b_vermelho_losango.png"));
+        this.add(new QuadradoMovel(new Posicao(5,9), false, "b_vermelho_losango.png"));
+        this.add(new QuadradoMovel(new Posicao(6,9), false, "b_vermelho_losango.png"));
+        this.add(new QuadradoMovel(new Posicao(7,9), false, "b_vermelho_losango.png"));
+        this.add(new QuadradoMovel(new Posicao(8,9), false, "b_vermelho_losango.png"));
+        this.add(new QuadradoMovel(new Posicao(9,9), false, "b_vermelho_losango.png"));
+        this.add(new QuadradoMovel(new Posicao(9,8), false, "b_vermelho_losango.png"));
+        this.add(new QuadradoMovel(new Posicao(9,7), false, "b_vermelho_losango.png"));
+        this.add(new QuadradoMovel(new Posicao(9,6), false, "b_vermelho_losango.png"));
+        this.add(new QuadradoMovel(new Posicao(9,5), false, "b_vermelho_losango.png"));
+        this.add(new QuadradoMovel(new Posicao(9,4), false, "b_vermelho_losango.png"));
+        this.add(new QuadradoMovel(new Posicao(9,3), false, "b_vermelho_losango.png"));
+        this.add(new QuadradoMovel(new Posicao(9,2), false, "b_vermelho_losango.png"));
+        this.add(new QuadradoMovel(new Posicao(9,1), false, "b_vermelho_losango.png"));
+        this.add(new QuadradoMovel(new Posicao(8,1), false, "b_vermelho_losango.png"));
+        this.add(new QuadradoMovel(new Posicao(7,1), false, "b_vermelho_losango.png"));
+        this.add(new QuadradoMovel(new Posicao(6,1), false, "b_vermelho_losango.png"));
+        this.add(new QuadradoMovel(new Posicao(5,1), false, "b_vermelho_losango.png"));
+        this.add(new QuadradoMovel(new Posicao(4,1), false, "b_vermelho_losango.png"));
+        this.add(new QuadradoMovel(new Posicao(3,1), false, "b_vermelho_losango.png"));
+        this.add(new QuadradoMovel(new Posicao(2,1), false, "b_vermelho_losango.png"));
+        
+        this.add(new QuadradoMovel(new Posicao(3,3), false, "b_vermelho_losango.png"));
+        this.add(new QuadradoMovel(new Posicao(3,4), false, "b_vermelho_losango.png"));
+        this.add(new QuadradoMovel(new Posicao(3,5), false, "b_vermelho_losango.png"));
+        this.add(new QuadradoMovel(new Posicao(3,6), false, "b_vermelho_losango.png"));
+        this.add(new QuadradoMovel(new Posicao(3,7), false, "b_vermelho_losango.png"));
+        this.add(new QuadradoMovel(new Posicao(4,7), false, "b_vermelho_losango.png"));
+        this.add(new QuadradoMovel(new Posicao(5,7), false, "b_vermelho_losango.png"));
+        this.add(new QuadradoMovel(new Posicao(6,7), false, "b_vermelho_losango.png"));
+        this.add(new QuadradoMovel(new Posicao(7,7), false, "b_vermelho_losango.png"));
+        this.add(new QuadradoMovel(new Posicao(7,6), false, "b_vermelho_losango.png"));
+        this.add(new QuadradoMovel(new Posicao(7,5), false, "b_vermelho_losango.png"));
+        this.add(new QuadradoMovel(new Posicao(7,4), false, "b_vermelho_losango.png"));
+        this.add(new QuadradoMovel(new Posicao(7,3), false, "b_vermelho_losango.png"));
+        this.add(new QuadradoMovel(new Posicao(6,3), false, "b_vermelho_losango.png"));
+        this.add(new QuadradoMovel(new Posicao(5,3), false, "b_vermelho_losango.png"));
+        this.add(new QuadradoMovel(new Posicao(4,3), false, "b_vermelho_losango.png"));
+        
+        this.add(new ItemColecionavel(new Posicao(5,0),"sol.jpg"));
+        this.add(new ItemColecionavel(new Posicao(5,2),"vela.jpg"));
+        this.add(new ItemColecionavel(new Posicao(5,10),"chave_inglesa.jpg"));
+        this.add(new ItemColecionavel(new Posicao(5,8),"lampada.jpg"));
+        
+        this.add(new Robo(new Posicao(0,5)));
+        this.add(new Robo(new Posicao(2,5)));
+        this.add(new Robo(new Posicao(8,5)));
+        this.add(new Robo(new Posicao(10,5)));
         
         return this;
     }

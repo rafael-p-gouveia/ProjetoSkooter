@@ -11,12 +11,13 @@ import Auxiliar.Posicao;
  *
  * @author guigu
  */
-public class QuadradoVermelho extends Elemento{
+public class QuadradoFixo extends Elemento{
     
-    public QuadradoVermelho(Posicao umaPosicao) {
-        super("bloco_liso_vermelho.png");
+    public QuadradoFixo(Posicao umaPosicao, boolean bDestrutivel, String sPath) {
+        super(sPath);
         this.setPosicao(umaPosicao);
         bTransponivel = false;
+        setbDestrutivel(bDestrutivel);
     }
     
 }

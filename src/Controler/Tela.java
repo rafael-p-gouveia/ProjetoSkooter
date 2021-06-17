@@ -40,8 +40,8 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
         backgroundFases = new String[4];
         backgroundFases[0] = "background_fase_1.jpg";
         backgroundFases[1] = "background_fase_2.png";
-        backgroundFases[2] = "background_fase_3.png";
-        backgroundFases[3] = "background_fase_4.png";
+        backgroundFases[2] = "background_fase_3.jpg";
+        backgroundFases[3] = "background_fase_4.jpg";
         
     
         /*Cria eElementos adiciona elementos*/

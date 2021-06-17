@@ -12,13 +12,13 @@ import Auxiliar.Posicao;
  *
  * @author guigu
  */
-public class QuadradoVerde extends Elemento {
+public class QuadradoMovel extends Elemento {
     
-    public QuadradoVerde(Posicao umaPosicao) {
-        super("bloco_losango_verde.png");
+    public QuadradoMovel(Posicao umaPosicao, boolean bDestrutivel, String sPath) {
+        super(sPath);
         this.setPosicao(umaPosicao);
         bTransponivel = false;
-        setbDestrutivel(true);
+        setbDestrutivel(bDestrutivel);
     }
     
     @Override
