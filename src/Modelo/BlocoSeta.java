@@ -39,5 +39,4 @@ public class BlocoSeta extends Elemento {
                 break;
         }
     }
-    
 }

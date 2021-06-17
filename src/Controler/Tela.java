@@ -18,7 +18,6 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
     private ArrayList<Elemento> eElementos;
     private ControleDeJogo cControle = new ControleDeJogo();
     private Graphics g2;
-    int faseAtual;
     String[] backgroundFases;
     Fase minhaFase;
     /**
@@ -44,7 +43,6 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
         backgroundFases[2] = "background_fase_3.png";
         backgroundFases[3] = "background_fase_4.png";
         
-        faseAtual = 0;
     
         /*Cria eElementos adiciona elementos*/
         /*O protagonista (heroi) necessariamente precisa estar na posicao 0 do array*/
@@ -96,7 +94,7 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
             for (int j = 0; j < Consts.RES; j++) {
                 try {
                     /*Linha para alterar o background*/
-                    Image newImage = Toolkit.getDefaultToolkit().getImage(new java.io.File(".").getCanonicalPath() + Consts.PATH + this.backgroundFases[faseAtual]);
+                    Image newImage = Toolkit.getDefaultToolkit().getImage(new java.io.File(".").getCanonicalPath() + Consts.PATH + this.backgroundFases[minhaFase.getiNfase()]);
                     g2.drawImage(newImage,j*Consts.CELL_SIDE, i*Consts.CELL_SIDE, Consts.CELL_SIDE, Consts.CELL_SIDE, null);
 
                 } catch (IOException ex) {
@@ -110,10 +108,10 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
             this.cControle.desenhaTudo(eElementos);
             this.cControle.processaTudo(eElementos);
             if(!this.cControle.haColecionaveisAinda(eElementos)) {
-                faseAtual = 1;
-                this.minhaFase.setFase2(hHero);
+                this.minhaFase.proximaFase(hHero);
             }
         }
+        
 
         g.dispose();
         g2.dispose();
@@ -145,14 +143,7 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
         } else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
             hHero.moveRight();
         } else if (e.getKeyCode() == KeyEvent.VK_R) {
-            this.eElementos.clear();
-            hHero = new Hero();
-            hHero.setPosicao(0, 7);
-            this.addElemento(hHero);
-
-            CoronaVirus cTeste = new CoronaVirus("carro_azul.png");
-            cTeste.setPosicao(5, 5);
-            this.addElemento(cTeste);
+            minhaFase.resetFase(hHero);
         } else if (e.getKeyCode() == KeyEvent.VK_X){
             int iStep;
             ElementoDinamico eStep = new ElementoDinamico(hHero.getPosicaoQueOlha());
@@ -213,6 +204,10 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
     public ControleDeJogo getControle() {
         return this.cControle;
     }
+    
+    public int getIndiceElementoColidindo(Elemento umPersonagem){
+        return cControle.getIndiceElementoColidindo(this.eElementos, umPersonagem);
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -267,4 +262,9 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
 
     public void keyReleased(KeyEvent e) {
     }
+
+    public Fase getMinhaFase() {
+        return minhaFase;
+    }
+    
 }

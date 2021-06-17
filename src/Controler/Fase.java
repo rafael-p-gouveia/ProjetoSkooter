@@ -18,10 +18,40 @@ public class Fase extends ArrayList<Elemento>{
     Fase(int iSize) {
         super(iSize);
     }
+    int iNfase = 0;
+
+    public int getiNfase() {
+        return iNfase;
+    }
     
+    
+    public void proximaFase(Hero umHero){
+        iNfase++;
+        resetFase(umHero);
+    }
+    
+    public void resetFase(Hero umHero){
+        switch(iNfase){
+            case 0:
+                setFase1(umHero);
+                break;
+            case 1:
+                setFase2(umHero);
+                break;
+            case 2:
+                //setFase3(umHero);
+                break;
+            case 3:
+                //setFase4(umHero);
+                break;
+        }
+    }
     public void setFase1(Hero umHero) {
         this.clear();
+        
+        umHero.setPosicao(6, 4);
         this.add(umHero);
+        
         this.add(new QuadradoVermelho(new Posicao(1,1)));
         this.add(new QuadradoVermelho(new Posicao(1,3)));
         this.add(new QuadradoVermelho(new Posicao(1,5)));

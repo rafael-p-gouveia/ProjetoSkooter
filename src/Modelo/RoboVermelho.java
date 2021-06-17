@@ -16,7 +16,7 @@ public class RoboVermelho extends ElementoDinamico {
     public RoboVermelho(Posicao umaPosicao) {
         super("r_rosa_baixo.png","r_rosa_esquerda.png","r_rosa_cima.png","r_rosa_direita.png");
         this.setPosicao(umaPosicao);
-        this.bTransponivel = true;
+        this.bTransponivel = false;
     }
     
     public void autoDesenho() {
@@ -41,4 +41,8 @@ public class RoboVermelho extends ElementoDinamico {
         super.autoDesenho();
     }
     
+    public void interage(Hero hHero){
+       //Desenhador.getTelaDoJogo().getMinhaFase().resetFase(hHero); Tá causando congelamento do game isso aqui na segunda fase, além de só funcionar
+       //quando o Hero que pisa no robô mas não o contrário
+    }
 }
