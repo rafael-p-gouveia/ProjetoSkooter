@@ -120,9 +120,9 @@ public class Fase extends ArrayList<Elemento>{
         
         
         this.add(new RoboVermelho(new Posicao(2,0)));
-        //this.add(new RoboVermelho(new Posicao(0,9)));
-        //this.add(new RoboVermelho(new Posicao(10,1)));
-        //this.add(new RoboVermelho(new Posicao(10,9)));
+        this.add(new RoboVermelho(new Posicao(0,9)));
+        this.add(new RoboVermelho(new Posicao(10,1)));
+        this.add(new RoboVermelho(new Posicao(10,9)));
         
         this.add(new ItemColecionavel(new Posicao(0,0),"uva.jpg"));
         this.add(new ItemColecionavel(new Posicao(10,0),"morango.jpg"));

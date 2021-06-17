@@ -13,6 +13,9 @@ import java.util.Random;
  * @author guigu
  */
 public class RoboVermelho extends ElementoDinamico {
+    
+    int iFlagSleep;
+    
     public RoboVermelho(Posicao umaPosicao) {
         super("r_rosa_baixo.png","r_rosa_esquerda.png","r_rosa_cima.png","r_rosa_direita.png");
         this.setPosicao(umaPosicao);
@@ -22,23 +25,33 @@ public class RoboVermelho extends ElementoDinamico {
     
     public void autoDesenho() {
         Random r = new Random();
-        int iDirecao = r.nextInt(4);
-        switch(iDirecao) {
-            case Consts.DOWN:
-                this.moveDown();
-                break;
-            case Consts.LEFT:
-                this.moveLeft();
-                break;
-            case Consts.UP:
-                this.moveUp();
-                break;
-            case Consts.RIGHT:
-                this.moveRight();
-                break;
+        if (iFlagSleep == 4){ //Aumente para diminuir a velocidade do robô
+            int iDirecao = r.nextInt(4);
+            switch(iDirecao) {
+               case Consts.DOWN:
+                    this.moveDown();
+                    break;
+                 case Consts.LEFT:
+                      this.moveLeft();
+                      break;
+                  case Consts.UP:
+                    this.moveUp();
+                    break;
+                case Consts.RIGHT:
+                    this.moveRight();
+                    break;
+            }
+            if(!Desenhador.getTelaDoJogo().ehPosicaoValidaRelativaAUmPersonagem(this)){
+               this.getPosicao().volta();
+               iFlagSleep = 3;
+            }
+            else{
+                iFlagSleep = 0;
+            }
         }
-        if(!Desenhador.getTelaDoJogo().ehPosicaoValidaRelativaAUmPersonagem(this))
-            this.getPosicao().volta();
+        else{
+            iFlagSleep++;
+        }
         super.autoDesenho();
     }
     
