@@ -16,8 +16,8 @@ public class Robo extends ElementoDinamico {
     
     int iFlagSleep;
     
-    public Robo(Posicao umaPosicao) {
-        super("r_rosa_baixo.png","r_rosa_esquerda.png","r_rosa_cima.png","r_rosa_direita.png");
+    public Robo(Posicao umaPosicao, String[] cor) {
+        super(cor[0],cor[1],cor[2],cor[3]);
         this.setPosicao(umaPosicao);
         this.bTransponivel = true;
         this.setbHostil(true);

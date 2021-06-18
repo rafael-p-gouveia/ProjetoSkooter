@@ -6,6 +6,7 @@
 package Controler;
 
 import Auxiliar.Consts;
+import java.lang.String;
 import Modelo.*;
 import Auxiliar.Posicao;
 import java.util.ArrayList;
@@ -15,10 +16,39 @@ import java.util.ArrayList;
  * @author guigu
  */
 public class Fase extends ArrayList<Elemento>{
+    int iNfase;
+    String[] roboCorAzul;
+    String[] roboCorAmarelo;
+    String[] roboCorVerde;
+    String[] roboCorRosa;
+    
     Fase(int iSize) {
         super(iSize);
+        roboCorAzul = new String[4];
+        roboCorAmarelo = new String[4];
+        roboCorVerde = new String[4];
+        roboCorRosa = new String[4];
+        
+        roboCorAzul[0] = "robo_azul_down.png";
+        roboCorAzul[1] = "robo_azul_left.png";
+        roboCorAzul[2] = "robo_azul_up.png";
+        roboCorAzul[3] = "robo_azul_right.png";
+        
+        roboCorAmarelo[0] = "robo_amarelo_down.png";
+        roboCorAmarelo[1] = "robo_amarelo_left.png";
+        roboCorAmarelo[2] = "robo_amarelo_up.png";
+        roboCorAmarelo[3] = "robo_amarelo_right.png";
+        
+        roboCorVerde[0] = "robo_verde_down.png";
+        roboCorVerde[1] = "robo_verde_left.png";
+        roboCorVerde[2] = "robo_verde_up.png";
+        roboCorVerde[3] = "robo_verde_right.png";
+        
+        roboCorRosa[0] = "robo_rosa_down.png";
+        roboCorRosa[1] = "robo_rosa_left.png";
+        roboCorRosa[2] = "robo_rosa_up.png";
+        roboCorRosa[3] = "robo_rosa_right.png";
     }
-    int iNfase;
 
     public int getiNfase() {
         return iNfase;
@@ -119,10 +149,10 @@ public class Fase extends ArrayList<Elemento>{
         this.add(new QuadradoMovel(new Posicao(10,7), true, "bloco_losango_verde.png"));
         
         
-        this.add(new Robo(new Posicao(2,0)));
-        this.add(new Robo(new Posicao(0,9)));
-        this.add(new Robo(new Posicao(10,1)));
-        this.add(new Robo(new Posicao(10,9)));
+        this.add(new Robo(new Posicao(2,0), roboCorAmarelo));
+        this.add(new Robo(new Posicao(0,9), roboCorRosa));
+        this.add(new Robo(new Posicao(10,1), roboCorAzul));
+        this.add(new Robo(new Posicao(10,9), roboCorVerde));
         
         this.add(new ItemColecionavel(new Posicao(0,0),"uva.png"));
         this.add(new ItemColecionavel(new Posicao(10,0),"morango.png"));
@@ -189,10 +219,10 @@ public class Fase extends ArrayList<Elemento>{
         this.add(new BlocoSeta(new Posicao(10,3),Consts.LEFT));
         this.add(new BlocoSeta(new Posicao(10,7),Consts.RIGHT));
         
-        this.add(new Robo(new Posicao(1,1)));
-        this.add(new Robo(new Posicao(1,9)));
-        this.add(new Robo(new Posicao(9,1)));
-        this.add(new Robo(new Posicao(9,9)));
+        this.add(new Robo(new Posicao(1,1), roboCorAmarelo));
+        this.add(new Robo(new Posicao(1,9), roboCorVerde));
+        this.add(new Robo(new Posicao(9,1), roboCorRosa));
+        this.add(new Robo(new Posicao(9,9), roboCorAzul));
 
         this.add(new ItemColecionavel(new Posicao(1,5),"uva.png"));
         this.add(new ItemColecionavel(new Posicao(5,9),"morango.png"));
@@ -263,10 +293,10 @@ public class Fase extends ArrayList<Elemento>{
         this.add(new ItemColecionavel(new Posicao(5,10),"chave_inglesa.png"));
         this.add(new ItemColecionavel(new Posicao(5,8),"lampada.png"));
         
-        this.add(new Robo(new Posicao(0,5)));
-        this.add(new Robo(new Posicao(2,5)));
-        this.add(new Robo(new Posicao(8,5)));
-        this.add(new Robo(new Posicao(10,5)));
+        this.add(new Robo(new Posicao(0,5), roboCorAmarelo));
+        this.add(new Robo(new Posicao(2,5), roboCorRosa));
+        this.add(new Robo(new Posicao(8,5), roboCorAzul));
+        this.add(new Robo(new Posicao(10,5), roboCorVerde));
         
         return this;
     }
@@ -324,10 +354,10 @@ public class Fase extends ArrayList<Elemento>{
         this.add(new ItemColecionavel(new Posicao(10,0),"vela.png"));
         this.add(new ItemColecionavel(new Posicao(10,10),"chave_inglesa.png"));
         
-        this.add(new Robo(new Posicao(0,5)));
-        this.add(new Robo(new Posicao(5,0)));
-        this.add(new Robo(new Posicao(5,10)));
-        this.add(new Robo(new Posicao(10,5)));
+        this.add(new Robo(new Posicao(0,5), roboCorAmarelo));
+        this.add(new Robo(new Posicao(5,0), roboCorVerde));
+        this.add(new Robo(new Posicao(5,10), roboCorAzul));
+        this.add(new Robo(new Posicao(10,5), roboCorRosa));
         
         this.add(new QuadradoFixo(new Posicao(0,3), false, "bloco_liso_vermelho.png"));
         this.add(new QuadradoFixo(new Posicao(0,7), false, "bloco_liso_vermelho.png"));
