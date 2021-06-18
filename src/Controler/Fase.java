@@ -124,10 +124,10 @@ public class Fase extends ArrayList<Elemento>{
         this.add(new Robo(new Posicao(10,1)));
         this.add(new Robo(new Posicao(10,9)));
         
-        this.add(new ItemColecionavel(new Posicao(0,0),"uva.jpg"));
-        this.add(new ItemColecionavel(new Posicao(10,0),"morango.jpg"));
-        this.add(new ItemColecionavel(new Posicao(0,10),"limao.jpg"));
-        this.add(new ItemColecionavel(new Posicao(10,10),"cereja.jpg"));
+        this.add(new ItemColecionavel(new Posicao(0,0),"uva.png"));
+        this.add(new ItemColecionavel(new Posicao(10,0),"morango.png"));
+        this.add(new ItemColecionavel(new Posicao(0,10),"limao.png"));
+        this.add(new ItemColecionavel(new Posicao(10,10),"cereja.png"));
         
         return this;
     }
@@ -194,10 +194,10 @@ public class Fase extends ArrayList<Elemento>{
         this.add(new Robo(new Posicao(9,1)));
         this.add(new Robo(new Posicao(9,9)));
 
-        this.add(new ItemColecionavel(new Posicao(1,5),"uva.jpg"));
-        this.add(new ItemColecionavel(new Posicao(5,9),"morango.jpg"));
-        this.add(new ItemColecionavel(new Posicao(5,1),"limao.jpg"));
-        this.add(new ItemColecionavel(new Posicao(9,5),"cereja.jpg"));
+        this.add(new ItemColecionavel(new Posicao(1,5),"uva.png"));
+        this.add(new ItemColecionavel(new Posicao(5,9),"morango.png"));
+        this.add(new ItemColecionavel(new Posicao(5,1),"limao.png"));
+        this.add(new ItemColecionavel(new Posicao(9,5),"cereja.png"));
         
         return this;
     }
@@ -258,10 +258,10 @@ public class Fase extends ArrayList<Elemento>{
         this.add(new QuadradoMovel(new Posicao(5,3), false, "b_vermelho_losango.png"));
         this.add(new QuadradoMovel(new Posicao(4,3), false, "b_vermelho_losango.png"));
         
-        this.add(new ItemColecionavel(new Posicao(5,0),"sol.jpg"));
-        this.add(new ItemColecionavel(new Posicao(5,2),"vela.jpg"));
-        this.add(new ItemColecionavel(new Posicao(5,10),"chave_inglesa.jpg"));
-        this.add(new ItemColecionavel(new Posicao(5,8),"lampada.jpg"));
+        this.add(new ItemColecionavel(new Posicao(5,0),"sol.png"));
+        this.add(new ItemColecionavel(new Posicao(5,2),"vela.png"));
+        this.add(new ItemColecionavel(new Posicao(5,10),"chave_inglesa.png"));
+        this.add(new ItemColecionavel(new Posicao(5,8),"lampada.png"));
         
         this.add(new Robo(new Posicao(0,5)));
         this.add(new Robo(new Posicao(2,5)));
@@ -319,10 +319,10 @@ public class Fase extends ArrayList<Elemento>{
         this.add(new QuadradoFixo(new Posicao(9,7), true, "b_verde_liso.png"));
         this.add(new QuadradoFixo(new Posicao(9,9), true, "b_verde_liso.png"));
         
-        this.add(new ItemColecionavel(new Posicao(0,0),"sol.jpg"));
-        this.add(new ItemColecionavel(new Posicao(0,10),"lampada.jpg"));
-        this.add(new ItemColecionavel(new Posicao(10,0),"vela.jpg"));
-        this.add(new ItemColecionavel(new Posicao(10,10),"chave_inglesa.jpg"));
+        this.add(new ItemColecionavel(new Posicao(0,0),"sol.png"));
+        this.add(new ItemColecionavel(new Posicao(0,10),"lampada.png"));
+        this.add(new ItemColecionavel(new Posicao(10,0),"vela.png"));
+        this.add(new ItemColecionavel(new Posicao(10,10),"chave_inglesa.png"));
         
         this.add(new Robo(new Posicao(0,5)));
         this.add(new Robo(new Posicao(5,0)));
