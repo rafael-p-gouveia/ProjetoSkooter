@@ -60,9 +60,15 @@ public class Fase extends ArrayList<Elemento>{
     
     
     public void proximaFase(Hero umHero){
-        if(iNfase < 3)
+        if(iNfase < 4){
             iNfase++;
         renderizaFase(umHero);
+        }
+        else{
+            iNfase = 0;
+            umHero.ressucita();
+            renderizaFase(umHero);
+        }
     }
     
     public void resetFase(Hero umHero) {
@@ -88,6 +94,9 @@ public class Fase extends ArrayList<Elemento>{
                 break;
             case 3:
                 setFase4(umHero);
+                break;
+            case 4:
+                setFim(umHero);
                 break;
         }
     }
@@ -375,6 +384,83 @@ public class Fase extends ArrayList<Elemento>{
         this.add(new QuadradoFixo(new Posicao(8,10), false, "bloco_liso_vermelho.png"));
         this.add(new QuadradoFixo(new Posicao(10,1), false, "bloco_liso_vermelho.png"));
         
+        
+        return this;
+    }
+    public Fase setFim(Hero umHero){
+        this.clear();
+        
+        umHero.setPosicao(5, 5);
+        this.add(umHero);
+        
+        this.add(new ItemColecionavel(new Posicao(0,0),"sol.png"));
+        this.add(new ItemColecionavel(new Posicao(0,1),"cereja.png"));
+        this.add(new ItemColecionavel(new Posicao(0,2),"chave_inglesa.png"));
+        this.add(new ItemColecionavel(new Posicao(0,4),"vela.png"));
+        this.add(new ItemColecionavel(new Posicao(0,9),"uva.png"));
+        this.add(new ItemColecionavel(new Posicao(1,1),"lampada.png"));
+        this.add(new ItemColecionavel(new Posicao(1,4),"limao.png"));
+        this.add(new ItemColecionavel(new Posicao(1,8),"morango.png"));
+        this.add(new ItemColecionavel(new Posicao(1,10),"sol.png"));
+        
+        this.add(new ItemColecionavel(new Posicao(2,1),"sol.png"));
+        this.add(new ItemColecionavel(new Posicao(2,4),"cereja.png"));
+        this.add(new ItemColecionavel(new Posicao(2,5),"chave_inglesa.png"));
+        this.add(new ItemColecionavel(new Posicao(2,6),"vela.png"));
+        this.add(new ItemColecionavel(new Posicao(2,8),"uva.png"));
+        this.add(new ItemColecionavel(new Posicao(2,9),"lampada.png"));
+        this.add(new ItemColecionavel(new Posicao(2,10),"limao.png"));
+        
+        this.add(new ItemColecionavel(new Posicao(3,1),"morango.png"));
+        this.add(new ItemColecionavel(new Posicao(3,4),"sol.png"));
+        this.add(new ItemColecionavel(new Posicao(3,6),"cereja.png"));
+        this.add(new ItemColecionavel(new Posicao(3,8),"chave_inglesa.png"));
+        
+        this.add(new ItemColecionavel(new Posicao(4,1),"vela.png"));
+        this.add(new ItemColecionavel(new Posicao(4,4),"uva.png"));
+        this.add(new ItemColecionavel(new Posicao(4,6),"lampada.png"));
+        this.add(new ItemColecionavel(new Posicao(4,8),"limao.png"));
+        this.add(new ItemColecionavel(new Posicao(4,9),"morango.png"));
+        this.add(new ItemColecionavel(new Posicao(4,10),"sol.png"));
+        
+        this.add(new ItemColecionavel(new Posicao(6,0),"cereja.png"));
+        this.add(new ItemColecionavel(new Posicao(6,1),"chave_inglesa.png"));
+        this.add(new ItemColecionavel(new Posicao(6,2),"vela.png"));
+        this.add(new ItemColecionavel(new Posicao(6,4),"uva.png"));
+        this.add(new ItemColecionavel(new Posicao(6,5),"lampada.png"));
+        this.add(new ItemColecionavel(new Posicao(6,10),"limao.png"));
+        
+        this.add(new ItemColecionavel(new Posicao(7,0),"morango.png"));
+        this.add(new ItemColecionavel(new Posicao(7,4),"sol.png"));
+        this.add(new ItemColecionavel(new Posicao(7,6),"cereja.png"));
+        this.add(new ItemColecionavel(new Posicao(7,10),"chave_inglesa.png"));
+        
+        this.add(new ItemColecionavel(new Posicao(8,0),"vela.png"));
+        this.add(new ItemColecionavel(new Posicao(8,1),"uva.png"));
+        this.add(new ItemColecionavel(new Posicao(8,2),"lampada.png"));
+        this.add(new ItemColecionavel(new Posicao(8,4),"limao.png"));
+        this.add(new ItemColecionavel(new Posicao(8,6),"morango.png"));
+        this.add(new ItemColecionavel(new Posicao(8,8),"sol.png"));
+        this.add(new ItemColecionavel(new Posicao(8,9),"cereja.png"));
+        this.add(new ItemColecionavel(new Posicao(8,10),"chave_inglesa.png"));
+        
+        this.add(new ItemColecionavel(new Posicao(9,0),"vela.png"));
+        this.add(new ItemColecionavel(new Posicao(9,4),"uva.png"));
+        this.add(new ItemColecionavel(new Posicao(9,6),"lampada.png"));
+        this.add(new ItemColecionavel(new Posicao(9,8),"limao.png"));
+        this.add(new ItemColecionavel(new Posicao(9,10),"morango.png"));
+        
+        this.add(new ItemColecionavel(new Posicao(10,0),"sol.png"));
+        this.add(new ItemColecionavel(new Posicao(10,1),"cereja.png"));
+        this.add(new ItemColecionavel(new Posicao(10,2),"chave_inglesa.png"));
+        this.add(new ItemColecionavel(new Posicao(10,4),"vela.png"));
+        this.add(new ItemColecionavel(new Posicao(10,6),"uva.png"));
+        this.add(new ItemColecionavel(new Posicao(10,8),"lampada.png"));
+        this.add(new ItemColecionavel(new Posicao(10,9),"limao.png"));
+        this.add(new ItemColecionavel(new Posicao(10,10),"morango.png"));
+        
+        System.out.println("Parabéns! Você venceu o jogo!");
+        System.out.println("Jogo por Guilherme Cremasco Gulmini 11816077 e Rafael Pereira de Gouveia 11800820");
         
         return this;
     }

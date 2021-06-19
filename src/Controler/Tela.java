@@ -37,11 +37,12 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
         /*Este array vai guardar os elementos graficos*/
         eElementos = new ArrayList<Elemento>(100);
         
-        backgroundFases = new String[4];
+        backgroundFases = new String[5];
         backgroundFases[0] = "background_fase_1.png";
         backgroundFases[1] = "background_fase_2.png";
         backgroundFases[2] = "background_fase_3.png";
         backgroundFases[3] = "background_fase_4.png";
+        backgroundFases[4] = "background_fase_5.png";
         
     
         /*Cria eElementos adiciona elementos*/
