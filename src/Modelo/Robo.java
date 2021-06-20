@@ -25,8 +25,18 @@ public class Robo extends ElementoDinamico {
     
     public void autoDesenho() {
         Random r = new Random();
+        
+        int iBiasHorizontal = Desenhador.getTelaDoJogo().getHero().getPosicao().direcaoRelativaHorizontal(pPosicao);
+        int iBiasVertical = Desenhador.getTelaDoJogo().getHero().getPosicao().direcaoRelativaVertical(pPosicao);
+        
         if (iFlagSleep == 4){ //Aumente para diminuir a velocidade do robô
-            int iDirecao = r.nextInt(4);
+            int iDirecao = r.nextInt(6); //gera numero de 0 a 5
+            if (iDirecao == 4){
+                iDirecao = iBiasHorizontal;
+            }
+            if (iDirecao == 5){
+                iDirecao = iBiasVertical;
+            }
             switch(iDirecao) {
                case Consts.DOWN:
                     this.moveDown();
@@ -43,7 +53,7 @@ public class Robo extends ElementoDinamico {
             }
             if(!Desenhador.getTelaDoJogo().ehPosicaoValidaRelativaAUmPersonagem(this)){
                this.getPosicao().volta();
-               iFlagSleep = 3;
+               iFlagSleep = 4;
             }
             else{
                 iFlagSleep = 0;

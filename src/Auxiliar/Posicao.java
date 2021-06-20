@@ -59,4 +59,22 @@ public class Posicao implements Serializable{
     public boolean moveLeft(){
         return this.setPosicao(this.getLinha(), this.getColuna()-1);        
     }
+    
+    public int direcaoRelativaHorizontal(Posicao p){ //retorna a posição que um objeto deve ir para chegar a this
+        if(this.linha >= p.getLinha()){ //this está à direita de p
+            return Consts.RIGHT;
+        }
+        else{ // this está à esquerda
+            return Consts.LEFT;
+        }
+    }
+    
+    public int direcaoRelativaVertical(Posicao p){ //retorna a posição que um objeto deve ir para chegar a this
+        if(this.coluna >= p.getColuna()){ //this está abaixo de p
+            return Consts.DOWN;
+        }
+        else{ // this está acima
+            return Consts.UP;
+        }
+    }
 }
