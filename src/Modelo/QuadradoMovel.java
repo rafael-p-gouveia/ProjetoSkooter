@@ -27,26 +27,30 @@ public class QuadradoMovel extends Elemento {
         switch(h.iIndexOfImage){
             case Consts.DOWN:
                 if(Desenhador.getTelaDoJogo().ehPosicaoValidaParaItens(new Posicao(getPosicao().getLinha() + 1, getPosicao().getColuna()))){
-                    //h.setPosicao(pPosicao);
+                    
                     this.moveDown();
+                    h.moveDown();
                 }
                 break;
             case Consts.LEFT:
                 if(Desenhador.getTelaDoJogo().ehPosicaoValidaParaItens(new Posicao(getPosicao().getLinha(), getPosicao().getColuna() - 1))){
-                    //h.setPosicao(pPosicao);
+                    
                     this.moveLeft();
+                    h.moveLeft();
                 }
                 break;
             case Consts.UP:
                 if(Desenhador.getTelaDoJogo().ehPosicaoValidaParaItens(new Posicao(getPosicao().getLinha() - 1, getPosicao().getColuna()))){
-                    //h.setPosicao(pPosicao);
+                    
                     this.moveUp();
+                    h.moveUp();
                 }
                 break;
             case Consts.RIGHT:
                 if(Desenhador.getTelaDoJogo().ehPosicaoValidaParaItens(new Posicao(getPosicao().getLinha(), getPosicao().getColuna() + 1))){
-                    //h.setPosicao(pPosicao);
+                    
                     this.moveRight();
+                    h.moveRight();
                 }
                 break;
         }
