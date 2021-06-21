@@ -12,7 +12,8 @@ public class Posicao implements Serializable{
     public Posicao(int linha, int coluna){
         this.setPosicao(linha,coluna);
     }
-
+    
+    // Seta uma posição
     public boolean setPosicao(int linha, int coluna){       
         if(linha < 0 || linha >= Auxiliar.Consts.RES)
             return false;
@@ -26,27 +27,32 @@ public class Posicao implements Serializable{
         return true;
     }
     
+    // Pega a linha de uma posição
     public int getLinha(){
         return linha;
     }
    
-    public boolean volta(){
-        return this.setPosicao(linhaAnterior,colunaAnterior);
-    }
-
+    // Pega a coluna de uma posição
     public int getColuna(){
         return coluna;
     }
-
+    
+    // Volta à posição anterior
+    public boolean volta(){
+        return this.setPosicao(linhaAnterior,colunaAnterior);
+    }
+    
+    // Verifica se duas posições são as mesmas
     public boolean estaNaMesmaPosicao(Posicao posicao){
         return (linha == posicao.getLinha() && coluna == posicao.getColuna());
     }
-
+    
+    // Copia uma posição
     public boolean copia(Posicao posicao){
         return this.setPosicao(posicao.getLinha(),posicao.getColuna());
     }
     
-    
+    // Métodos que mudam a posição de elementos através de movimentos direcionais
     public boolean moveUp(){
         return this.setPosicao(this.getLinha()-1, this.getColuna());
     }
@@ -60,7 +66,8 @@ public class Posicao implements Serializable{
         return this.setPosicao(this.getLinha(), this.getColuna()-1);        
     }
     
-    public int direcaoRelativaHorizontal(Posicao p){ //retorna a posição que um objeto deve ir para chegar a this
+    // Retorna a posição que um objeto deve ir para chegar a this
+    public int direcaoRelativaHorizontal(Posicao p){
         if(this.linha >= p.getLinha()){ //this está à direita de p
             return Consts.RIGHT;
         }
@@ -69,7 +76,8 @@ public class Posicao implements Serializable{
         }
     }
     
-    public int direcaoRelativaVertical(Posicao p){ //retorna a posição que um objeto deve ir para chegar a this
+    // Retorna a posição que um objeto deve ir para chegar a this
+    public int direcaoRelativaVertical(Posicao p){
         if(this.coluna >= p.getColuna()){ //this está abaixo de p
             return Consts.DOWN;
         }

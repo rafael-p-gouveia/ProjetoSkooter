@@ -6,16 +6,16 @@ import Modelo.Hero;
 import Auxiliar.Posicao;
 import java.util.ArrayList;
 
-/**
- *
- * @author junio
- */
+
 public class ControleDeJogo {
+    // Desenha todos os elementos do array
     public void desenhaTudo(ArrayList<Elemento> e){
         for(int i = 0; i < e.size(); i++){
             e.get(i).autoDesenho();
         }
     }
+    
+    // Processa todos os elementos do array
     public void processaTudo(ArrayList<Elemento> e){
         Hero hHero = (Hero)e.get(0); /*O heroi (protagonista) eh sempre o primeiro do array*/
         Elemento eTemp;
@@ -36,6 +36,8 @@ public class ControleDeJogo {
             }
         }
     }
+    
+    // Verifica se uma posição é válida (para o herói)
     public boolean ehPosicaoValida(ArrayList<Elemento> e, Posicao p){
         Elemento eTemp;
         /*Validacao da posicao de todos os elementos com relacao a Posicao p*/
@@ -52,20 +54,23 @@ public class ControleDeJogo {
         }
         return true;
     }
+    
+    // Verifica se uma posição é válida (para os demais itens) analisando uma posição
     public boolean ehPosicaoValidaParaItens(ArrayList<Elemento> e, Posicao p){
         Elemento eTemp;
-        /*Validacao da posicao de todos os elementos com relacao a Posicao p*/
+        //Validacao da posicao de todos os elementos com relacao a Posicao p
        if(p.getLinha() == -1 || p.getLinha() == 11 || p.getColuna() == -1 || p.getColuna() == 11){
             return false;
         }
-        for(int i = 1; i < e.size(); i++){ /*Olha todos os elementos*/
-            eTemp = e.get(i); /*Pega o i-esimo elemento do jogo*/
+        for(int i = 1; i < e.size(); i++){ //Olha todos os elementos
+            eTemp = e.get(i); //Pega o i-esimo elemento do jogo
             if(eTemp.getPosicao().estaNaMesmaPosicao(p))
-                return false; /*A posicao p é invalida, pois ha um elemento (i-esimo eTemp) intransponivel lá*/
+                return false; //A posicao p é invalida, pois ha um elemento (i-esimo eTemp) intransponivel lá
         }
         return true;
     }
     
+    // Pega o índice de um elemento que colidiu com o elemento "p"
     public int getIndiceElementoColidindo(ArrayList<Elemento> e, Elemento p){
         Elemento eStep;
         for(int i = 0; i < e.size(); i++){
@@ -79,6 +84,7 @@ public class ControleDeJogo {
         return -1;
     }
     
+    // Verifica se uma posição é válida (para os demais itens) analisando o próprio elemento
     public boolean ehPosicaoValidaRelativaAUmPersonagem(ArrayList<Elemento> e, Elemento umElemento) {
         Elemento eTemp;
         for(int i = 1; i < e.size(); i++) {
@@ -94,8 +100,8 @@ public class ControleDeJogo {
         return true;
     }
     
+    // Verifica se há itens colecionáveis numa fase
     public boolean haColecionaveisAinda(ArrayList<Elemento> e) {
-        Elemento eTemp;
         for(int i = 1; i < e.size(); i++) {
             if(e.get(i).isColecionavel()) {
                 return true;

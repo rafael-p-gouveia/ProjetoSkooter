@@ -1,36 +1,28 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Modelo;
 import Auxiliar.*;
-import Controler.Tela;
 import java.util.Random;
 
-/**
- *
- * @author guigu
- */
 public class Robo extends ElementoDinamico {
-    
-    int iFlagSleep;
+    int iFlagSleep; // Controlador de velocidade dos robôs. Quanto maior, menor será a velocidade deles
     
     public Robo(Posicao umaPosicao, String[] cor) {
         super(cor[0],cor[1],cor[2],cor[3]);
         this.setPosicao(umaPosicao);
-        this.bTransponivel = true;
+        this.setbTransponivel(true);
         this.setbHostil(true);
     }
     
+    // Desenha o robô
     public void autoDesenho() {
-        Random r = new Random();
+        Random r = new Random(); // a direção que ele vai é aleatória0
         
+        // Essas duas variáveis retornam a linha e a coluna da possível posição que o herói irá
         int iBiasHorizontal = Desenhador.getTelaDoJogo().getHero().getPosicao().direcaoRelativaHorizontal(pPosicao);
         int iBiasVertical = Desenhador.getTelaDoJogo().getHero().getPosicao().direcaoRelativaVertical(pPosicao);
         
-        if (iFlagSleep == 4){ //Aumente para diminuir a velocidade do robô
+        if (iFlagSleep == 4){
             int iDirecao = r.nextInt(6); //gera numero de 0 a 5
+            // Caso o número acima seja 4 ou 5, o robô tentará se aproximar do herói "conscientemente". Caso contrário, ele seguirá uma direção aleatória
             if (iDirecao == 4){
                 iDirecao = iBiasHorizontal;
             }
@@ -63,10 +55,5 @@ public class Robo extends ElementoDinamico {
             iFlagSleep++;
         }
         super.autoDesenho();
-    }
-    
-    public void interage(Hero hHero){
-       //Desenhador.getTelaDoJogo().getMinhaFase().resetFase(hHero); Tá causando congelamento do game isso aqui na segunda fase, além de só funcionar
-       //quando o Hero que pisa no robô mas não o contrário
     }
 }

@@ -2,7 +2,6 @@ package Modelo;
 
 import Auxiliar.Consts;
 import Auxiliar.Desenhador;
-import Controler.Tela;
 import Auxiliar.Posicao;
 import java.awt.Graphics;
 import java.awt.Image;
@@ -11,16 +10,12 @@ import java.io.IOException;
 import java.io.Serializable;
 import javax.swing.ImageIcon;
 
-/**
- *
- * @author Junio
- */
 public abstract class Elemento implements Serializable {
 
     protected int iIndexOfImage;
     protected ImageIcon[] iImage;
     protected Posicao pPosicao;
-    protected boolean bColecionavel;
+    protected boolean bColecionavel; // é um item colecionável?
     protected boolean bTransponivel; /*Pode passar por cima?*/
     protected boolean bInterativo; //interage com blocos do mapa
     protected boolean bDestrutivel; //bloco pode ser destruido pelo hero?
@@ -39,12 +34,12 @@ public abstract class Elemento implements Serializable {
         sNomeImagePNG[2] = caminho3;
         sNomeImagePNG[3] = caminho4;
         
-        bInterativo = false;
-        bDestrutivel = false;
-        bBlocoSeta = false;
-        bHostil = false;
-        iIndexOfImage = 0;
-        iImage = new ImageIcon[5];
+        this.bInterativo = false;
+        this.bDestrutivel = false;
+        this.bBlocoSeta = false;
+        this.bHostil = false;
+        this.iIndexOfImage = 0;
+        this.iImage = new ImageIcon[5];
         this.pPosicao = new Posicao(1, 1);
         this.bColecionavel = false;
         this.bTransponivel = true;
@@ -83,54 +78,82 @@ public abstract class Elemento implements Serializable {
             System.out.println(ex.getMessage());
         }
     }
-
+    
+    // Retorna a posição de um elemento
     public Posicao getPosicao() {
         return pPosicao;
     }
-
+    
+    // Verifica se o elemento é interativo
     public boolean isbInterativo(){
         return bInterativo;
     }
     
+    public void setbInterativo(boolean bInterativo) {
+        this.bInterativo = bInterativo;
+    }
+    
+    // Verifica se o elemento é transponível
     public boolean isbTransponivel() {
         return bTransponivel;
     }
+    
+    // Define se um elemento é transponível ou não
     public void setbTransponivel(boolean bTransponivel) {
         this.bTransponivel = bTransponivel;
     }
     
+    // Verifica se um elemento é colecionável
     public boolean isColecionavel() {
         return bColecionavel;
     }
     
+    // Define se um elemento é colecionável ou não
     public void setbColecionavel(boolean bColecionavel) {
         this.bColecionavel = bColecionavel;
     }
     
+    // Verifica se um elemento é um bloco seta
     public boolean isbBlocoSeta() {
         return bBlocoSeta;
     }
     
+    // Define se um elemento é bloco seta ou não
     public void setbBlocoSeta(boolean bBlocoSeta) {
         this.bBlocoSeta = bBlocoSeta;
     }
     
+    // Verifica se um elemento é hostil
     public boolean isbHostil() {
         return bHostil;
     }
     
+    // Define se um elemento é hostil ou não
     public void setbHostil(boolean bHostil) {
         this.bHostil = bHostil;
     }
-
+    
+    // Verifica se um elemento é destrutível
+    public boolean isbDestrutivel() {
+        return bDestrutivel;
+    }
+    
+    // Define se um elemento é destrutível ou não
+    public void setbDestrutivel(boolean bDestrutivel) {
+        this.bDestrutivel = bDestrutivel;
+    }
+    
+    // Seta a posição de um elemento passando a linha e a coluna da posição
     public boolean setPosicao(int linha, int coluna) {
         return pPosicao.setPosicao(linha, coluna);
     }
     
+    // Seta a posição de um elemento passando o próprio objeto de posição
     public boolean setPosicao(Posicao umaPosicao) {
         return pPosicao.copia(umaPosicao);
     }
-
+    
+    // Métodos que movem um elemento
     public boolean moveUp() {
         return this.pPosicao.moveUp();
     }
@@ -147,23 +170,17 @@ public abstract class Elemento implements Serializable {
         return this.pPosicao.moveLeft();
     }
     
+    // Define a imagem de um elemento com base no índice da imagem
     public void setImagemCorrente(int iIndex) {
         iIndexOfImage = iIndex;
     }
     
-   public void autoDesenho(){
+    // Desenha o elemento
+    public void autoDesenho(){
         Desenhador.desenhar(this.iImage[iIndexOfImage], pPosicao.getColuna(), pPosicao.getLinha());        
     }
    
-   public void interage(Hero hHero){
-       //hHero.voltaAUltimaPosicao();
-   }
-
-    public boolean isbDestrutivel() {
-        return bDestrutivel;
-    }
-
-    public void setbDestrutivel(boolean bDestrutivel) {
-        this.bDestrutivel = bDestrutivel;
+    public void interage(Hero hHero){
+       //Método vazio na classe mãe, mas é definido em algumas classes filhas que usam esse método
     }
 }

@@ -16,7 +16,7 @@ public class ItemColecionavel extends Elemento {
         super(nomeImagem);
         this.setPosicao(umaPosicao);
         this.setbColecionavel(true);
-        bTransponivel = true;
+        this.setbTransponivel(true);
     }
     
 }

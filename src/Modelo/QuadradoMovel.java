@@ -1,54 +1,40 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Modelo;
 import Auxiliar.Consts;
 import Auxiliar.Desenhador;
 import Auxiliar.Posicao;
 
-/**
- *
- * @author guigu
- */
 public class QuadradoMovel extends Elemento {
-    
     public QuadradoMovel(Posicao umaPosicao, boolean bDestrutivel, String sPath) {
         super(sPath);
         this.setPosicao(umaPosicao);
-        bTransponivel = false;
+        this.setbTransponivel(false);
         setbDestrutivel(bDestrutivel);
     }
     
     @Override
+    // Método que representa a interação do bloco com o herói
     public void interage(Hero h){
-        
-        switch(h.iIndexOfImage){
-            case Consts.DOWN:
+        switch(h.iIndexOfImage){ // O índice da imagem do herói representa também a orientação do herói
+            case Consts.DOWN: // Se o herói estiver indo para baixo
                 if(Desenhador.getTelaDoJogo().ehPosicaoValidaParaItens(new Posicao(getPosicao().getLinha() + 1, getPosicao().getColuna()))){
-                    
                     this.moveDown();
                     h.moveDown();
                 }
                 break;
-            case Consts.LEFT:
+            case Consts.LEFT: // Se o herói estiver indo para esquerda
                 if(Desenhador.getTelaDoJogo().ehPosicaoValidaParaItens(new Posicao(getPosicao().getLinha(), getPosicao().getColuna() - 1))){
-                    
                     this.moveLeft();
                     h.moveLeft();
                 }
                 break;
-            case Consts.UP:
+            case Consts.UP: // Se o herói estiver indo para cima
                 if(Desenhador.getTelaDoJogo().ehPosicaoValidaParaItens(new Posicao(getPosicao().getLinha() - 1, getPosicao().getColuna()))){
-                    
                     this.moveUp();
                     h.moveUp();
                 }
                 break;
-            case Consts.RIGHT:
+            case Consts.RIGHT: // Se o herói estiver indo para direita
                 if(Desenhador.getTelaDoJogo().ehPosicaoValidaParaItens(new Posicao(getPosicao().getLinha(), getPosicao().getColuna() + 1))){
-                    
                     this.moveRight();
                     h.moveRight();
                 }

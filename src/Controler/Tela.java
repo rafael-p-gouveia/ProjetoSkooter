@@ -7,11 +7,9 @@ import java.awt.event.*;
 import java.io.*;
 import java.util.*;
 import java.util.logging.*;
-import java.util.zip.*;
-/**
- *
- * @author junio
- */
+//import java.util.zip.*;
+
+
 public class Tela extends javax.swing.JFrame implements KeyListener {
 
     private Hero hHero;

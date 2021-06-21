@@ -1,16 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Modelo;
 
 import Auxiliar.*;
 
-/**
- *
- * @author guigu
- */
 public class BlocoSeta extends Elemento {
     protected int iOrientacao;
     
@@ -18,13 +9,14 @@ public class BlocoSeta extends Elemento {
         super("bloco_seta_down.png", "bloco_seta_left.png", "bloco_seta_up.png", "bloco_seta_right.png");
         this.setPosicao(umaPosicao);
         this.setImagemCorrente(iIndiceImagem);
-        iOrientacao = iIndiceImagem;
         this.setbTransponivel(false);
         this.setbBlocoSeta(true);
+        iOrientacao = iIndiceImagem;
     }
     
+    // Método que faz a lógica da interação entre o herói e um bloco seta
     public void interage(Hero h) {
-        switch(iOrientacao){
+        switch(iOrientacao){ // Dependendo da orientação da seta, o bloco move o herói para a próxima posição válida que a seta apontar
             case Consts.DOWN:
                 h.moveDown();
                 break;

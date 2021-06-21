@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Controler;
 
 import Auxiliar.Consts;
@@ -11,10 +6,7 @@ import Modelo.*;
 import Auxiliar.Posicao;
 import java.util.ArrayList;
 
-/**
- *
- * @author guigu
- */
+
 public class Fase extends ArrayList<Elemento>{
     int iNfase;
     String[] roboCorAzul;
@@ -49,38 +41,42 @@ public class Fase extends ArrayList<Elemento>{
         roboCorRosa[2] = "robo_rosa_up.png";
         roboCorRosa[3] = "robo_rosa_right.png";
     }
-
+    
+    // Retorna o número da fase atual
     public int getiNfase() {
         return iNfase;
     }
     
+    // Seta o número para mudar de fase
     public void setiNfase(int iNfase) {
         this.iNfase = iNfase;
     }
     
-    
+    // Muda de fase
     public void proximaFase(Hero umHero){
         if(iNfase < 4){
-            iNfase++;
+            this.setiNfase(iNfase + 1);
         renderizaFase(umHero);
         }
         else{
-            iNfase = 0;
+            this.setiNfase(0);
             umHero.ressucita();
             renderizaFase(umHero);
         }
     }
     
+    // Reseta a fase após uma morte
     public void resetFase(Hero umHero) {
         if(umHero.getiNumeroVidas() >= 0)
             renderizaFase(umHero);
         else {
             umHero.ressucita();
-            iNfase = 0;
+            this.setiNfase(0);
             renderizaFase(umHero);
         }
     }
     
+    // Renderiza uma fase
     public void renderizaFase(Hero umHero){
         switch(iNfase){
             case 0:
@@ -100,6 +96,8 @@ public class Fase extends ArrayList<Elemento>{
                 break;
         }
     }
+    
+    // Contrói a fase 1
     public Fase setFase1(Hero umHero) {
         this.clear();
         
@@ -171,6 +169,7 @@ public class Fase extends ArrayList<Elemento>{
         return this;
     }
     
+    // Contrói a fase 2
     public Fase setFase2(Hero umHero) {
         this.clear();
         
@@ -241,6 +240,7 @@ public class Fase extends ArrayList<Elemento>{
         return this;
     }
     
+    // Contrói a fase 3
     public Fase setFase3(Hero umHero) {
         this.clear();
         
@@ -310,6 +310,7 @@ public class Fase extends ArrayList<Elemento>{
         return this;
     }
     
+    // Contrói a fase 4
     public Fase setFase4(Hero umHero) {
         this.clear();
         
@@ -387,6 +388,8 @@ public class Fase extends ArrayList<Elemento>{
         
         return this;
     }
+    
+    // Contrói a fase bônus
     public Fase setFim(Hero umHero){
         this.clear();
         
