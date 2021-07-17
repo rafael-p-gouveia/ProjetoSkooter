@@ -2,11 +2,11 @@ package Modelo;
 import Auxiliar.*;
 import java.util.Random;
 
-public class Robo extends ElementoDinamico {
+abstract public class Robo extends ElementoDinamico {
     int iFlagSleep; // Controlador de velocidade dos robôs. Quanto maior, menor será a velocidade deles
     
-    public Robo(Posicao umaPosicao, String[] cor) {
-        super(cor[0],cor[1],cor[2],cor[3]);
+    public Robo(Posicao umaPosicao, String cor1, String cor2, String cor3, String cor4) {
+        super(cor1,cor2,cor3,cor4);
         this.setPosicao(umaPosicao);
         this.setbTransponivel(true);
         this.setbHostil(true);
