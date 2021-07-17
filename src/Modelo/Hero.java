@@ -3,12 +3,20 @@ package Modelo;
 import java.io.Serializable;
 
 public class Hero extends ElementoDinamico implements Serializable{
-    int iNumeroVidas;
-    public Hero() {
+    private static Hero heroInstance = null;
+    private int iNumeroVidas;
+    private Hero() { // padrão singleton
         super("protag_baixo.png","protag_esquerda.png","protag_cima.png","protag_direita.png");
         this.setbTransponivel(false);
         this.setbInterativo(true);
         iNumeroVidas = 3;
+    }
+    
+    public static Hero getInstance() {
+        if(heroInstance == null)
+            heroInstance = new Hero();
+        
+        return heroInstance;
     }
     
     // Método que faz o herói voltar à última posição

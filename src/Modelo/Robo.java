@@ -17,8 +17,8 @@ public class Robo extends ElementoDinamico {
         Random r = new Random(); // a direção que ele vai é aleatória0
         
         // Essas duas variáveis retornam a linha e a coluna da possível posição que o herói irá
-        int iBiasHorizontal = Desenhador.getTelaDoJogo().getHero().getPosicao().direcaoRelativaHorizontal(pPosicao);
-        int iBiasVertical = Desenhador.getTelaDoJogo().getHero().getPosicao().direcaoRelativaVertical(pPosicao);
+        int iBiasHorizontal = Hero.getInstance().getPosicao().direcaoRelativaHorizontal(pPosicao);
+        int iBiasVertical = Hero.getInstance().getPosicao().direcaoRelativaVertical(pPosicao);
         
         if (iFlagSleep == 4){
             int iDirecao = r.nextInt(6); //gera numero de 0 a 5

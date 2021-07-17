@@ -12,9 +12,9 @@ import java.util.logging.*;
 
 public class Tela extends javax.swing.JFrame implements KeyListener {
 
-    private Hero hHero;
+    //private Hero hHero;
     private ArrayList<Elemento> eElementos;
-    private ControleDeJogo cControle = new ControleDeJogo();
+    //private ControleDeJogo cControle = ControleDeJogo.getInstance();
     private Graphics g2;
     String[] backgroundFases;
     Fase minhaFase;
@@ -44,10 +44,10 @@ public class Tela extends javax.swing.JFrame implements KeyListener {
     
         /*Cria eElementos adiciona elementos*/
         /*O protagonista (heroi) necessariamente precisa estar na posicao 0 do array*/
-        hHero = new Hero(); /* https://www.online-image-editor.com/ */
-        hHero.setPosicao(0, 7);
+        //hHero = new Hero(); /* https://www.online-image-editor.com/ */
+        Hero.getInstance().setPosicao(0, 7);
         minhaFase = new Fase(100);
-        eElementos = minhaFase.setFase1(hHero);
+        eElementos = minhaFase.setFase1();
         
     }
 
@@ -87,10 +87,10 @@ public class Tela extends javax.swing.JFrame implements KeyListener {
         /*Aqui podem ser inseridos novos processamentos de controle*/
         eElementos = minhaFase;
         if (!this.eElementos.isEmpty()) {
-            this.cControle.desenhaTudo(eElementos);
-            this.cControle.processaTudo(eElementos);
-            if(!this.cControle.haColecionaveisAinda(eElementos)) {
-                this.minhaFase.proximaFase(hHero);
+            ControleDeJogo.getInstance().desenhaTudo(eElementos);
+            ControleDeJogo.getInstance().processaTudo(eElementos);
+            if(!ControleDeJogo.getInstance().haColecionaveisAinda(eElementos)) {
+                this.minhaFase.proximaFase();
             }
         }
         
@@ -117,19 +117,19 @@ public class Tela extends javax.swing.JFrame implements KeyListener {
     public void keyPressed(KeyEvent e) {
         /*Movimento do heroi via teclado*/
         if (e.getKeyCode() == KeyEvent.VK_UP) {
-            hHero.moveUp();
+            Hero.getInstance().moveUp();
         } else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
-            hHero.moveDown();
+            Hero.getInstance().moveDown();
         } else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
-            hHero.moveLeft();
+            Hero.getInstance().moveLeft();
         } else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-            hHero.moveRight();
+            Hero.getInstance().moveRight();
         } else if (e.getKeyCode() == KeyEvent.VK_R) {
-            minhaFase.resetFase(hHero);
+            minhaFase.resetFase();
         } else if (e.getKeyCode() == KeyEvent.VK_X){
             int iStep;
-            ElementoDinamico eStep = new ElementoDinamico(hHero.getPosicaoQueOlha());
-            iStep = cControle.getIndiceElementoColidindo(eElementos, eStep);
+            ElementoDinamico eStep = new ElementoDinamico(Hero.getInstance().getPosicaoQueOlha());
+            iStep = ControleDeJogo.getInstance().getIndiceElementoColidindo(eElementos, eStep);
             if(iStep != -1){
                 if(eElementos.get(iStep).isbDestrutivel()){
                     eElementos.remove(iStep);
@@ -138,36 +138,32 @@ public class Tela extends javax.swing.JFrame implements KeyListener {
         }
         
         /*Se o heroi for para uma posicao invalida, sobre um elemento intransponivel, volta para onde estava*/
-        if (!cControle.ehPosicaoValida(this.eElementos,hHero.getPosicao())) {
-            while(!cControle.ehPosicaoValida(this.eElementos,hHero.getPosicao())) {
-                Elemento eColidido = eElementos.get(cControle.getIndiceElementoColidindo(this.eElementos, hHero));
-                eColidido.interage(hHero);
+        if (!ControleDeJogo.getInstance().ehPosicaoValida(this.eElementos,Hero.getInstance().getPosicao())) {
+            while(!ControleDeJogo.getInstance().ehPosicaoValida(this.eElementos,Hero.getInstance().getPosicao())) {
+                Elemento eColidido = eElementos.get(ControleDeJogo.getInstance().getIndiceElementoColidindo(this.eElementos, Hero.getInstance()));
+                eColidido.interage();
                 if(!eColidido.isbBlocoSeta())
-                    hHero.voltaAUltimaPosicao();
+                    Hero.getInstance().voltaAUltimaPosicao();
             }
         }
 
-        this.setTitle("-> Cell: " + (hHero.getPosicao().getColuna()) + ", " + (hHero.getPosicao().getLinha()));
+        this.setTitle("-> Cell: " + (Hero.getInstance().getPosicao().getColuna()) + ", " + (Hero.getInstance().getPosicao().getLinha()));
     }
     
     public boolean ehPosicaoValida(Posicao umaPosicao) {
-        return cControle.ehPosicaoValida(this.eElementos, umaPosicao);
+        return ControleDeJogo.getInstance().ehPosicaoValida(this.eElementos, umaPosicao);
     }
     
     public boolean ehPosicaoValidaParaItens(Posicao umaPosicao) {
-        return cControle.ehPosicaoValidaParaItens(this.eElementos, umaPosicao);
+        return ControleDeJogo.getInstance().ehPosicaoValidaParaItens(this.eElementos, umaPosicao);
     }
     
     public boolean ehPosicaoValidaRelativaAUmPersonagem(Elemento umPersonagem) {
-        return cControle.ehPosicaoValidaRelativaAUmPersonagem(this.eElementos, umPersonagem);
-    }
-    
-    public ControleDeJogo getControle() {
-        return this.cControle;
+        return ControleDeJogo.getInstance().ehPosicaoValidaRelativaAUmPersonagem(this.eElementos, umPersonagem);
     }
     
     public int getIndiceElementoColidindo(Elemento umPersonagem){
-        return cControle.getIndiceElementoColidindo(this.eElementos, umPersonagem);
+        return ControleDeJogo.getInstance().getIndiceElementoColidindo(this.eElementos, umPersonagem);
     }
 
     /**
@@ -209,9 +205,4 @@ public class Tela extends javax.swing.JFrame implements KeyListener {
     public Fase getMinhaFase() {
         return minhaFase;
     }
-    
-    public Hero getHero(){
-        return hHero;
-    }
-    
 }

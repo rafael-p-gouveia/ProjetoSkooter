@@ -15,19 +15,19 @@ public class BlocoSeta extends Elemento {
     }
     
     // Método que faz a lógica da interação entre o herói e um bloco seta
-    public void interage(Hero h) {
+    public void interage() {
         switch(iOrientacao){ // Dependendo da orientação da seta, o bloco move o herói para a próxima posição válida que a seta apontar
             case Consts.DOWN:
-                h.moveDown();
+                Hero.getInstance().moveDown();
                 break;
             case Consts.LEFT:
-                h.moveLeft();
+                Hero.getInstance().moveLeft();
                 break;
             case Consts.UP:
-                h.moveUp();
+                Hero.getInstance().moveUp();
                 break;
             case Consts.RIGHT:
-                h.moveRight();
+                Hero.getInstance().moveRight();
                 break;
         }
     }

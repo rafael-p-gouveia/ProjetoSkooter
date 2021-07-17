@@ -53,56 +53,56 @@ public class Fase extends ArrayList<Elemento>{
     }
     
     // Muda de fase
-    public void proximaFase(Hero umHero){
+    public void proximaFase(){
         if(iNfase < 4){
             this.setiNfase(iNfase + 1);
-        renderizaFase(umHero);
+        renderizaFase();
         }
         else{
             this.setiNfase(0);
-            umHero.ressucita();
-            renderizaFase(umHero);
+            Hero.getInstance().ressucita();
+            renderizaFase();
         }
     }
     
     // Reseta a fase após uma morte
-    public void resetFase(Hero umHero) {
-        if(umHero.getiNumeroVidas() >= 0)
-            renderizaFase(umHero);
+    public void resetFase() {
+        if(Hero.getInstance().getiNumeroVidas() >= 0)
+            renderizaFase();
         else {
-            umHero.ressucita();
+            Hero.getInstance().ressucita();
             this.setiNfase(0);
-            renderizaFase(umHero);
+            renderizaFase();
         }
     }
     
     // Renderiza uma fase
-    public void renderizaFase(Hero umHero){
+    public void renderizaFase(){
         switch(iNfase){
             case 0:
-                setFase1(umHero);
+                setFase1();
                 break;
             case 1:
-                setFase2(umHero);
+                setFase2();
                 break;
             case 2:
-                setFase3(umHero);
+                setFase3();
                 break;
             case 3:
-                setFase4(umHero);
+                setFase4();
                 break;
             case 4:
-                setFim(umHero);
+                setFim();
                 break;
         }
     }
     
     // Contrói a fase 1
-    public Fase setFase1(Hero umHero) {
+    public Fase setFase1() {
         this.clear();
         
-        umHero.setPosicao(6, 4);
-        this.add(umHero);
+        Hero.getInstance().setPosicao(6, 4);
+        this.add(Hero.getInstance());
         
         this.add(new QuadradoFixo(new Posicao(1,1), false, "bloco_liso_vermelho.png"));
         this.add(new QuadradoFixo(new Posicao(1,3), false, "bloco_liso_vermelho.png"));
@@ -170,11 +170,11 @@ public class Fase extends ArrayList<Elemento>{
     }
     
     // Contrói a fase 2
-    public Fase setFase2(Hero umHero) {
+    public Fase setFase2() {
         this.clear();
         
-        umHero.setPosicao(5, 5);
-        this.add(umHero);
+        Hero.getInstance().setPosicao(5, 5);
+        this.add(Hero.getInstance());
 
         this.add(new QuadradoFixo(new Posicao(1,3), false, "bloco_liso_vermelho.png"));
         this.add(new QuadradoFixo(new Posicao(1,7), false, "bloco_liso_vermelho.png"));
@@ -241,11 +241,11 @@ public class Fase extends ArrayList<Elemento>{
     }
     
     // Contrói a fase 3
-    public Fase setFase3(Hero umHero) {
+    public Fase setFase3() {
         this.clear();
         
-        umHero.setPosicao(5, 5);
-        this.add(umHero);
+        Hero.getInstance().setPosicao(5, 5);
+        this.add(Hero.getInstance());
         
         this.add(new QuadradoMovel(new Posicao(1,1), false, "b_vermelho_losango.png"));
         this.add(new QuadradoMovel(new Posicao(1,2), false, "b_vermelho_losango.png"));
@@ -311,11 +311,11 @@ public class Fase extends ArrayList<Elemento>{
     }
     
     // Contrói a fase 4
-    public Fase setFase4(Hero umHero) {
+    public Fase setFase4() {
         this.clear();
         
-        umHero.setPosicao(4, 5);
-        this.add(umHero);
+        Hero.getInstance().setPosicao(4, 5);
+        this.add(Hero.getInstance());
         
         this.add(new QuadradoFixo(new Posicao(1,1), true, "b_verde_liso.png"));
         this.add(new QuadradoFixo(new Posicao(1,3), true, "b_verde_liso.png"));
@@ -390,11 +390,11 @@ public class Fase extends ArrayList<Elemento>{
     }
     
     // Contrói a fase bônus
-    public Fase setFim(Hero umHero){
+    public Fase setFim(){
         this.clear();
         
-        umHero.setPosicao(5, 5);
-        this.add(umHero);
+        Hero.getInstance().setPosicao(5, 5);
+        this.add(Hero.getInstance());
         
         this.add(new ItemColecionavel(new Posicao(0,0),"sol.png"));
         this.add(new ItemColecionavel(new Posicao(0,1),"cereja.png"));

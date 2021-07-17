@@ -8,6 +8,17 @@ import java.util.ArrayList;
 
 
 public class ControleDeJogo {
+    private static ControleDeJogo instance = null;
+    private ControleDeJogo(){
+        // padrão singleton
+    }
+    
+    public static ControleDeJogo getInstance() {
+        if(instance == null)
+            instance = new ControleDeJogo();
+        
+        return instance;
+    }
     // Desenha todos os elementos do array
     public void desenhaTudo(ArrayList<Elemento> e){
         for(int i = 0; i < e.size(); i++){
@@ -31,7 +42,7 @@ public class ControleDeJogo {
                 }
                 if(eTemp.isbHostil()) {
                     hHero.morre();
-                    fFase.resetFase(hHero);
+                    fFase.resetFase();
                 }
             }
         }
