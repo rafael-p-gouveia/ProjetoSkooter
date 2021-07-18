@@ -9,15 +9,32 @@ import java.util.*;
 import java.util.logging.*;
 //import java.util.zip.*;
 
+import java.io.File; // arquivo em si
+import java.io.FileNotFoundException;
+import java.io.IOException; // resolve os erros jogados
+import java.io.FileOutputStream; // cano pra sair
+import java.io.ObjectOutputStream;
+import java.util.zip.GZIPOutputStream;
+import java.io.FileInputStream; // cano pra entrar
+import java.io.ObjectInputStream;
+import java.util.zip.GZIPInputStream;
+
 
 public class Tela extends javax.swing.JFrame implements KeyListener {
-
+    
     //private Hero hHero;
     private ArrayList<Elemento> eElementos;
     //private ControleDeJogo cControle = ControleDeJogo.getInstance();
     private Graphics g2;
     String[] backgroundFases;
     Fase minhaFase;
+    
+    SaveState sSave = new SaveState(eElementos, minhaFase);
+    File fArquivoSave = new File("save.dat");
+    
+     //cria arquivo compactado, se ja nao existir
+    
+    
     /**
      * Creates new form
      */
@@ -52,6 +69,60 @@ public class Tela extends javax.swing.JFrame implements KeyListener {
     }
 
 /*--------------------------------------------------*/
+    private void gravaSave(){
+        try { //cria arquivo compactado, se ja nao existir
+            sSave.setMinhaFase(minhaFase);
+            sSave.seteElementos(eElementos);
+            
+            if (!fArquivoSave.exists()) {
+                fArquivoSave.createNewFile();
+            }
+            FileOutputStream saida = new FileOutputStream(fArquivoSave);
+            GZIPOutputStream compactador = new GZIPOutputStream(saida);
+            ObjectOutputStream serializador = new ObjectOutputStream(compactador);
+
+            serializador.writeObject(sSave);
+
+            serializador.flush();
+            serializador.close();
+            compactador.close();
+            saida.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    private void carregaSave(){
+        try { //le arquivo compactado
+
+            FileInputStream entrada = new FileInputStream(fArquivoSave);
+            GZIPInputStream descompactador = new GZIPInputStream(entrada);
+            ObjectInputStream deserializador = new ObjectInputStream(descompactador);
+
+            sSave = (SaveState)deserializador.readObject();
+
+            deserializador.close();
+            descompactador.close();
+            entrada.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        catch (ClassNotFoundException e){
+            e.printStackTrace();
+        }
+        //sSave.print();
+        minhaFase = sSave.getMinhaFase();
+        minhaFase.resetFase();
+        eElementos = sSave.geteElementos();
+        //Hero.getInstance().setPosicao(eElementos.get(0).getPosicao());
+        
+        
+    }
+    
     public void addElemento(Elemento umElemento) {
         eElementos.add(umElemento);
     }
@@ -135,6 +206,10 @@ public class Tela extends javax.swing.JFrame implements KeyListener {
                     eElementos.remove(iStep);
                 }
             }
+        } else if (e.getKeyCode() == KeyEvent.VK_Q){
+            gravaSave();
+        } else if (e.getKeyCode() == KeyEvent.VK_W){
+            carregaSave();
         }
         
         /*Se o heroi for para uma posicao invalida, sobre um elemento intransponivel, volta para onde estava*/

@@ -4,10 +4,11 @@ import Auxiliar.Consts;
 import java.lang.String;
 import Modelo.*;
 import Auxiliar.Posicao;
+import java.io.Serializable;
 import java.util.ArrayList;
 
 
-public class Fase extends ArrayList<Elemento>{
+public class Fase extends ArrayList<Elemento> implements Serializable{
     int iNfase;
     
     Fase(int iSize) {
