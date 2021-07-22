@@ -180,7 +180,7 @@ public abstract class Elemento implements Serializable {
         Desenhador.desenhar(this.iImage[iIndexOfImage], pPosicao.getColuna(), pPosicao.getLinha());        
     }
    
-    public void interage(){
+    public void interage(Hero heroi){
        //Método vazio na classe mãe, mas é definido em algumas classes filhas que usam esse método
     }
 }

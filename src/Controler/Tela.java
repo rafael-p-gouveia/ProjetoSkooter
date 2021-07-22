@@ -22,14 +22,14 @@ import java.util.zip.GZIPInputStream;
 
 public class Tela extends javax.swing.JFrame implements KeyListener {
     
-    //private Hero hHero;
+    private Hero hHero;
     private ArrayList<Elemento> eElementos;
     //private ControleDeJogo cControle = ControleDeJogo.getInstance();
     private Graphics g2;
     String[] backgroundFases;
     Fase minhaFase;
     
-    SaveState sSave = new SaveState(eElementos, minhaFase);
+    SaveState sSave = new SaveState(eElementos, minhaFase, hHero);
     File fArquivoSave = new File("save.dat");
     
      //cria arquivo compactado, se ja nao existir
@@ -61,16 +61,16 @@ public class Tela extends javax.swing.JFrame implements KeyListener {
     
         /*Cria eElementos adiciona elementos*/
         /*O protagonista (heroi) necessariamente precisa estar na posicao 0 do array*/
-        //hHero = new Hero(); /* https://www.online-image-editor.com/ */
-        Hero.getInstance().setPosicao(0, 7);
+        hHero = new Hero(); /* https://www.online-image-editor.com/ */
+        hHero.setPosicao(0, 7);
         minhaFase = new Fase(100);
-        eElementos = minhaFase.setFase1();
-        
+        eElementos = minhaFase.setFase1(hHero);
     }
 
 /*--------------------------------------------------*/
     private void gravaSave(){
         try { //cria arquivo compactado, se ja nao existir
+            sSave.setHero(hHero);
             sSave.setMinhaFase(minhaFase);
             sSave.seteElementos(eElementos);
             
@@ -116,7 +116,8 @@ public class Tela extends javax.swing.JFrame implements KeyListener {
         }
         //sSave.print();
         minhaFase = sSave.getMinhaFase();
-        minhaFase.resetFase();
+        //minhaFase.resetFase();
+        hHero = sSave.getHero();
         eElementos = sSave.geteElementos();
         //Hero.getInstance().setPosicao(eElementos.get(0).getPosicao());
         
@@ -161,7 +162,7 @@ public class Tela extends javax.swing.JFrame implements KeyListener {
             ControleDeJogo.getInstance().desenhaTudo(eElementos);
             ControleDeJogo.getInstance().processaTudo(eElementos);
             if(!ControleDeJogo.getInstance().haColecionaveisAinda(eElementos)) {
-                this.minhaFase.proximaFase();
+                this.minhaFase.proximaFase(hHero);
             }
         }
         
@@ -188,18 +189,18 @@ public class Tela extends javax.swing.JFrame implements KeyListener {
     public void keyPressed(KeyEvent e) {
         /*Movimento do heroi via teclado*/
         if (e.getKeyCode() == KeyEvent.VK_UP) {
-            Hero.getInstance().moveUp();
+            hHero.moveUp();
         } else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
-            Hero.getInstance().moveDown();
+            hHero.moveDown();
         } else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
-            Hero.getInstance().moveLeft();
+            hHero.moveLeft();
         } else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-            Hero.getInstance().moveRight();
+            hHero.moveRight();
         } else if (e.getKeyCode() == KeyEvent.VK_R) {
-            minhaFase.resetFase();
+            minhaFase.resetFase(hHero);
         } else if (e.getKeyCode() == KeyEvent.VK_X){
             int iStep;
-            ElementoDinamico eStep = new ElementoDinamico(Hero.getInstance().getPosicaoQueOlha());
+            ElementoDinamico eStep = new ElementoDinamico(hHero.getPosicaoQueOlha());
             iStep = ControleDeJogo.getInstance().getIndiceElementoColidindo(eElementos, eStep);
             if(iStep != -1){
                 if(eElementos.get(iStep).isbDestrutivel()){
@@ -213,16 +214,16 @@ public class Tela extends javax.swing.JFrame implements KeyListener {
         }
         
         /*Se o heroi for para uma posicao invalida, sobre um elemento intransponivel, volta para onde estava*/
-        if (!ControleDeJogo.getInstance().ehPosicaoValida(this.eElementos,Hero.getInstance().getPosicao())) {
-            while(!ControleDeJogo.getInstance().ehPosicaoValida(this.eElementos,Hero.getInstance().getPosicao())) {
-                Elemento eColidido = eElementos.get(ControleDeJogo.getInstance().getIndiceElementoColidindo(this.eElementos, Hero.getInstance()));
-                eColidido.interage();
+        if (!ControleDeJogo.getInstance().ehPosicaoValida(this.eElementos,hHero.getPosicao())) {
+            while(!ControleDeJogo.getInstance().ehPosicaoValida(this.eElementos,hHero.getPosicao())) {
+                Elemento eColidido = eElementos.get(ControleDeJogo.getInstance().getIndiceElementoColidindo(this.eElementos, hHero));
+                eColidido.interage(hHero);
                 if(!eColidido.isbBlocoSeta())
-                    Hero.getInstance().voltaAUltimaPosicao();
+                    hHero.voltaAUltimaPosicao();
             }
         }
 
-        this.setTitle("-> Cell: " + (Hero.getInstance().getPosicao().getColuna()) + ", " + (Hero.getInstance().getPosicao().getLinha()));
+        this.setTitle("-> Cell: " + (hHero.getPosicao().getColuna()) + ", " + (hHero.getPosicao().getLinha()));
     }
     
     public boolean ehPosicaoValida(Posicao umaPosicao) {
@@ -279,5 +280,9 @@ public class Tela extends javax.swing.JFrame implements KeyListener {
 
     public Fase getMinhaFase() {
         return minhaFase;
+    }
+    
+    public Hero getHero() {
+        return hHero;
     }
 }

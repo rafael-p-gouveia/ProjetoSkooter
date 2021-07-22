@@ -42,7 +42,7 @@ public class ControleDeJogo {
                 }
                 if(eTemp.isbHostil()) {
                     hHero.morre();
-                    fFase.resetFase();
+                    fFase.resetFase(hHero);
                 }
             }
         }
