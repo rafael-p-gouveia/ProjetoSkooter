@@ -1,6 +1,8 @@
 package Modelo;
 
 import Controler.Tela;
+import Controler.ProxySave;
+import java.util.Scanner;
 
 //Jogo por Guilherme Cremasco Gulmini 11816077 e Rafael Pereira de Gouveia 11800820
 public class Main {
@@ -13,6 +15,12 @@ public class Main {
                 tTela.go();
             }
         });
+        
+        Scanner s = new Scanner(System.in);
+        System.out.println("Qual será o intervalo do auto-save?\nInsira o valor em segundos: ");
+        int intervalo = s.nextInt() * 1000;
+        ProxySave salvamentoAutomatico = new ProxySave();
+        salvamentoAutomatico.roda(intervalo);
     }
 }
 

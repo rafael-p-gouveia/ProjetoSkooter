@@ -68,7 +68,7 @@ public class Tela extends javax.swing.JFrame implements KeyListener {
     }
 
 /*--------------------------------------------------*/
-    private void gravaSave(){
+    public void gravaSave(){
         try { //cria arquivo compactado, se ja nao existir
             sSave.setHero(hHero);
             sSave.setMinhaFase(minhaFase);
