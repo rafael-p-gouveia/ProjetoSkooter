@@ -16,10 +16,13 @@ public class ProxySave {
         thread = new ThreadSave();
     }
     
-    public void roda(long lIntervalo) {
-        if(lIntervalo <= 0)
-            throw new Error("ERRO - intervalo inválido!");
+    public boolean roda(long lIntervalo) {
+        if(lIntervalo <= 0){
+            System.out.println("INTERVALO INVÁLIDO");
+            return false;
+        }
         else
             thread.roda(lIntervalo);
+            return true;
     }
 }

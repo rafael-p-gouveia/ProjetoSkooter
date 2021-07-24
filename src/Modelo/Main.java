@@ -17,10 +17,13 @@ public class Main {
         });
         
         Scanner s = new Scanner(System.in);
-        System.out.println("Qual será o intervalo do auto-save?\nInsira o valor em segundos: ");
-        int intervalo = s.nextInt() * 1000;
         ProxySave salvamentoAutomatico = new ProxySave();
-        salvamentoAutomatico.roda(intervalo);
-    }
+            System.out.println("Qual será o intervalo do auto-save?\nInsira o valor em segundos: ");
+            int intervalo = s.nextInt() * 1000;
+            while(!salvamentoAutomatico.roda(intervalo)){
+                System.out.println("Qual será o intervalo do auto-save?\nInsira o valor em segundos: ");
+                intervalo = s.nextInt() * 1000;
+            }
+    }   
 }
 
