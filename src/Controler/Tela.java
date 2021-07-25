@@ -20,7 +20,7 @@ import java.io.ObjectInputStream;
 import java.util.zip.GZIPInputStream;
 
 
-public class Tela extends javax.swing.JFrame implements KeyListener {
+public class Tela extends javax.swing.JFrame implements KeyListener, MouseListener {
     
     private Hero hHero;
     private ArrayList<Elemento> eElementos;
@@ -43,6 +43,7 @@ public class Tela extends javax.swing.JFrame implements KeyListener {
         initComponents();
  
         this.addKeyListener(this);   /*teclado*/
+        this.addMouseListener(this);
         
         /*Cria a janela do tamanho do cenario + insets (bordas) da janela*/
         this.setSize(Consts.RES * Consts.CELL_SIDE + getInsets().left + getInsets().right,
@@ -212,6 +213,17 @@ public class Tela extends javax.swing.JFrame implements KeyListener {
         } else if (e.getKeyCode() == KeyEvent.VK_W){
             carregaSave();
         }
+        else if(e.getKeyCode() == KeyEvent.VK_P){
+            int iStep;
+            Elemento eASerSubs, eASub;
+            Posicao pStep = hHero.getPosicaoQueOlha();
+            ElementoDinamico eStep = new ElementoDinamico(pStep);
+            iStep = ControleDeJogo.getInstance().getIndiceElementoColidindo(eElementos, eStep);
+            eASerSubs = eElementos.get(iStep);
+            eASub = ControleDeJogo.getInstance().getElementoArquivo(pStep,eASerSubs);
+            eElementos.remove(iStep);
+            eElementos.add(eASub);
+        }
         
         /*Se o heroi for para uma posicao invalida, sobre um elemento intransponivel, volta para onde estava*/
         if (!ControleDeJogo.getInstance().ehPosicaoValida(this.eElementos,hHero.getPosicao())) {
@@ -224,6 +236,24 @@ public class Tela extends javax.swing.JFrame implements KeyListener {
         }
 
         this.setTitle("-> Cell: " + (hHero.getPosicao().getColuna()) + ", " + (hHero.getPosicao().getLinha()));
+    }
+    
+    public void mousePressed(MouseEvent e) {
+         /*//Movimento via mouse
+         int x = e.getX();
+         int y = e.getY();
+         
+         Posicao pStep = new Posicao(x/Consts.CELL_SIDE,y/Consts.CELL_SIDE);
+         this.setTitle("X: "+ x + ", Y: " + y +
+         " -> Cell: " + (y/Consts.CELL_SIDE) + ", " + (x/Consts.CELL_SIDE));
+         int iStep;
+         ElementoDinamico eStep = new ElementoDinamico(pStep);
+         iStep = ControleDeJogo.getInstance().getIndiceElementoColidindo(eElementos, eStep);
+         eElementos.remove(iStep);
+         eElementos.add(ControleDeJogo.getInstance().getElementoArquivo(pStep));
+                
+         
+        repaint();*/
     }
     
     public boolean ehPosicaoValida(Posicao umaPosicao) {
@@ -284,5 +314,20 @@ public class Tela extends javax.swing.JFrame implements KeyListener {
     
     public Hero getHero() {
         return hHero;
+    }
+    
+    public void mouseMoved(MouseEvent e) {
+    }
+
+    public void mouseClicked(MouseEvent e) {
+    }
+
+    public void mouseReleased(MouseEvent e) {
+    }
+
+    public void mouseEntered(MouseEvent e) {
+    }
+
+    public void mouseExited(MouseEvent e) {
     }
 }

@@ -4,7 +4,17 @@ import Auxiliar.Desenhador;
 import Modelo.Elemento;
 import Modelo.Hero;
 import Auxiliar.Posicao;
+import Modelo.BlocoSeta;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.util.ArrayList;
+import java.util.zip.GZIPInputStream;
+import javax.swing.JFileChooser;
+import javax.swing.filechooser.FileSystemView;
+
 
 
 public class ControleDeJogo {
@@ -119,5 +129,44 @@ public class ControleDeJogo {
             }
         }
         return false;
+    }
+    
+    public Elemento getElementoArquivo(Posicao pStep, Elemento eASerSub){
+        Elemento eRetornar = new BlocoSeta(pStep,1);
+        JFileChooser jfc = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
+        
+        int returnValue = jfc.showOpenDialog(null);
+        // int returnValue = jfc.showSaveDialog(null);
+
+        if (returnValue == JFileChooser.APPROVE_OPTION) {
+            File selectedFile = jfc.getSelectedFile();
+            String sCaminho = selectedFile.getAbsolutePath();
+            
+            try { //le arquivo compactado
+            File fObjetoLer = new File(sCaminho);
+            FileInputStream entrada = new FileInputStream(fObjetoLer);
+            GZIPInputStream descompactador = new GZIPInputStream(entrada);
+            ObjectInputStream deserializador = new ObjectInputStream(descompactador);
+
+             eRetornar = (Elemento)deserializador.readObject();
+             eRetornar.setPosicao(pStep);
+
+            deserializador.close();
+            descompactador.close();
+            entrada.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        catch (ClassNotFoundException e){
+            e.printStackTrace();
+        }
+        }
+        else{
+            eRetornar = eASerSub;
+        }
+        
+        return eRetornar;
     }
 }
