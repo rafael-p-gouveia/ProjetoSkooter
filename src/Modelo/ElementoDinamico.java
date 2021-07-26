@@ -15,19 +15,23 @@ public class ElementoDinamico extends Elemento implements Serializable {
     
     // Métodos que movem um elemento dinâmico
     public boolean moveDown() {
-        iIndexOfImage = Consts.DOWN;
+        if(!this.isbAnimado()) // verificação extra para não atrapalhar a animação de personagens animados, como o Pac Man
+            iIndexOfImage = Consts.DOWN;
         return this.pPosicao.moveDown();
     }
     public boolean moveLeft() {
-        iIndexOfImage = Consts.LEFT;
+        if(!this.isbAnimado())
+            iIndexOfImage = Consts.LEFT;
         return this.pPosicao.moveLeft();
     }
     public boolean moveUp() {
-        iIndexOfImage = Consts.UP;
+        if(!this.isbAnimado())
+            iIndexOfImage = Consts.UP;
         return this.pPosicao.moveUp();
     }
     public boolean moveRight() {
-        iIndexOfImage = Consts.RIGHT;
+        if(!this.isbAnimado())
+            iIndexOfImage = Consts.RIGHT;
         return this.pPosicao.moveRight();
     }
     

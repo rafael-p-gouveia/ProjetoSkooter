@@ -35,6 +35,7 @@ public class NewMain {
         criaArquivo(new BlocoSeta(pStep,LEFT),"blocoEsquerda.dat");
         criaArquivo(new BlocoSeta(pStep,RIGHT),"blocoDireita.dat");
         criaArquivo(new RoboRosa(pStep),"roboRosa.dat");
+        criaArquivo(new PacMan(),"pacMan.dat");
         
         JFileChooser jfc = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
 

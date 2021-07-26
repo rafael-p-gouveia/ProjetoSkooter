@@ -10,6 +10,7 @@ abstract public class Robo extends ElementoDinamico {
         this.setPosicao(umaPosicao);
         this.setbTransponivel(true);
         this.setbHostil(true);
+        //this.setbInterativo(true);
     }
     
     // Desenha o robô

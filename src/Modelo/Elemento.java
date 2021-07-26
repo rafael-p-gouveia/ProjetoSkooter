@@ -21,6 +21,7 @@ public abstract class Elemento implements Serializable {
     protected boolean bDestrutivel; //bloco pode ser destruido pelo hero?
     protected boolean bBlocoSeta; // o elemento é um bloco seta?
     protected boolean bHostil; // o elemento causa dano no jogador?
+    protected boolean bAnimado; // o elemento possui animação?
        
     public Elemento(Auxiliar.Posicao p){
         pPosicao = p;
@@ -43,6 +44,7 @@ public abstract class Elemento implements Serializable {
         this.pPosicao = new Posicao(1, 1);
         this.bColecionavel = false;
         this.bTransponivel = true;
+        this.bAnimado = false;
         try {
             for(int i = 0; i < sNomeImagePNG.length; i++) {
                 iImage[i] = new ImageIcon(new java.io.File(".").getCanonicalPath() + Consts.PATH + sNomeImagePNG[i]);
@@ -66,6 +68,7 @@ public abstract class Elemento implements Serializable {
         this.bDestrutivel = false;
         this.bBlocoSeta = false;
         this.bHostil = false;
+        this.bAnimado = false;
         iImage = new ImageIcon[5];
         try {
             iImage[0] = new ImageIcon(new java.io.File(".").getCanonicalPath() + Consts.PATH + sNomeImagePNG[0]);
@@ -141,6 +144,14 @@ public abstract class Elemento implements Serializable {
     // Define se um elemento é destrutível ou não
     public void setbDestrutivel(boolean bDestrutivel) {
         this.bDestrutivel = bDestrutivel;
+    }
+    
+    public boolean isbAnimado(){
+        return bAnimado;
+    }
+    
+    public void setbAnimado(boolean bAnimado) {
+        this.bAnimado = bAnimado;
     }
     
     // Seta a posição de um elemento passando a linha e a coluna da posição
