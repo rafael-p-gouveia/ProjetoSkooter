@@ -131,15 +131,6 @@ public class ControleDeJogo {
         return false;
     }
     
-    public boolean haRobosAinda(ArrayList<Elemento> e) {
-        for(int i = 1; i < e.size(); i++) {
-            if(e.get(i).isbHostil()) {
-                return true;
-            }
-        }
-        return false;
-    }
-    
     public boolean PacManColidiuComUmRobo(ArrayList<Elemento> e, Elemento PacMan) {
         int indice = getIndiceElementoColidindo(e, PacMan);
         if(indice != -1) {

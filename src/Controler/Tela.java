@@ -275,10 +275,6 @@ public class Tela extends javax.swing.JFrame implements KeyListener, MouseListen
     public boolean PacManColidiuComUmRobo(Elemento pacMan){
         return ControleDeJogo.getInstance().PacManColidiuComUmRobo(eElementos, pacMan);
     }
-    
-    public boolean haRobosAinda() {
-        return ControleDeJogo.getInstance().haRobosAinda(eElementos);
-    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -322,16 +318,6 @@ public class Tela extends javax.swing.JFrame implements KeyListener, MouseListen
     
     public Hero getHero() {
         return hHero;
-    }
-    
-    public Robo getUmRobo() {
-        Elemento eTemp = null;
-        for(int i = 1; i < eElementos.size(); i++) {
-            eTemp = eElementos.get(i);
-            if(eTemp.isbHostil())
-                break;
-        }
-        return (Robo)eTemp;
     }
     
     public void mouseMoved(MouseEvent e) {

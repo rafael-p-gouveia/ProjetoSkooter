@@ -26,21 +26,7 @@ public class PacMan extends ElementoDinamico {
     
     public void autoDesenho() {
         Random r = new Random();
-        int iDirecao = r.nextInt(6);
-        if(Desenhador.getTelaDoJogo().haRobosAinda()) { // caso tenha robôs na fase, o Pac Man vai atrás deles
-            int iBiasHorizontal = Desenhador.getTelaDoJogo().getUmRobo().getPosicao().direcaoRelativaHorizontal(pPosicao);
-            int iBiasVertical = Desenhador.getTelaDoJogo().getUmRobo().getPosicao().direcaoRelativaVertical(pPosicao);
-            
-            if (iDirecao == 4){
-                iDirecao = iBiasHorizontal;
-            }
-            if (iDirecao == 5){
-                iDirecao = iBiasVertical;
-            }
-        }
-        else {
-            iDirecao = r.nextInt(4);
-        }
+        int iDirecao = r.nextInt(4);
         
         switch(iDirecao) {
            case Consts.DOWN:
