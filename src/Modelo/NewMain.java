@@ -34,18 +34,11 @@ public class NewMain {
         criaArquivo(new BlocoSeta(pStep,DOWN),"blocoBaixo.dat");
         criaArquivo(new BlocoSeta(pStep,LEFT),"blocoEsquerda.dat");
         criaArquivo(new BlocoSeta(pStep,RIGHT),"blocoDireita.dat");
+        criaArquivo(new BlocoSeta(pStep,RIGHT),"blocoDireita.dat");
+        criaArquivo(new QuadradoMovel(pStep, true, "bloco_losango_verde.png"),"blocoFixoVerde");
         criaArquivo(new RoboRosa(pStep),"roboRosa.dat");
         criaArquivo(new PacMan(),"pacMan.dat");
         
-        JFileChooser jfc = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
-
-        int returnValue = jfc.showOpenDialog(null);
-        // int returnValue = jfc.showSaveDialog(null);
-
-        if (returnValue == JFileChooser.APPROVE_OPTION) {
-            File selectedFile = jfc.getSelectedFile();
-            System.out.println(selectedFile.getAbsolutePath());
-        }
         
  }
     static void criaArquivo(Elemento eElemento, String nome){
